@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Funktionen on Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/</link>
+    <description>Recent content in Funktionen on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:22:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/10_funktionen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Werte auslesen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/datenfelder/</link>
+      <pubDate>Fri, 10 Aug 2018 20:51:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/datenfelder/</guid>
+      <description>Werte einzelner Datenfelder können mit der Funktion data ausgelesen werden. In ihrer einfachsten Form hat data ein Attribut, source, welches dem Namen des auszulesenden Feldes entspricht. Dabei können auch Wildcards verwendet werden, so ? für ein beliebiges Zeichen und * für Sequenz arbiträrer Zeichen mit Länge 0-n. In dieser einfachsten Form - ausgeschrieben also bspw. &amp;lt;data source=&amp;quot;100*.a&amp;quot;/&amp;gt; - wird lediglich definiert, dass Werte in den Feldern, welche auf den Ausdruck 100*.</description>
+    </item>
+    
+    <item>
+      <title>Transformationen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/transformationen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/transformationen/</guid>
+      <description>compose Fügt dem Wert ein Prä- (prefix=) und/oder ein Suffix (postfix=) hinzu
+constant Ersetzt Wert durch ein Literal (value=)
+timestamp Ersetzt Wert durch aktuellen Zeitstempel
+ format: Format des Zeitstempels gemäss java.text.SimpleDateFormat timezone: Zeitzone gemäss java.util.TimeZone (Standard: UTC) language: Gebietsschema gemäss java.util.Locale  substring Extrahiert Substring basierend auf Indizes (start=, end=)
+regexp Extrahiert einen Substring basierend auf einem regulären Ausdruck (match=). Rückwärtsreferenzen (capture groups) werden unterstützt, welche durch format=&amp;quot;${1..n}&amp;quot; wiederverwendet werden können.</description>
+    </item>
+    
+    <item>
+      <title>Filter</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/filter/</guid>
+      <description>whitelist Filtert Werte basierend auf einer Whitelist (nur gelistete Werte werden weitergeleitet)
+Für weitere Informationen siehe Abschnitt &amp;ldquo;Nachschlagetabellen&amp;rdquo;
+ blacklist Filtert Werte basierend auf einer Blacklist (gelistete Werte werden geblockt)
+Für weitere Informationen siehe Abschnitt &amp;ldquo;Nachschlagetabellen&amp;rdquo;
+ equals / not-equals Literal wird nur dann weitergeleitet, wenn sein Wert gleich wie Wert in string= ist. Für not-equals gilt das Umgekehrte.
+occurrence Literal werden nur dann weitergeleitet, wenn sie mehr (moreThan) oder weniger oft (lessThan) als ein ein Wert (only=) vorkommen.</description>
+    </item>
+    
+    <item>
+      <title>Nachschlagetabellen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/nachschlagetabellen/</link>
+      <pubDate>Mon, 13 Aug 2018 13:39:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/nachschlagetabellen/</guid>
+      <description>Nachschlagetabellen dienen zur Filterung oder Ersetzung bestimmter Werte und werden so von den Funktionen whitelist und blacklist sowie setreplace und lookup verwendet. Sie können in Metamorph an verschiedenen Stellen definiert werden:
+ Wird die Nachschlagetabelle nur an einer einzigen Stelle benötigt, macht es Sinn, sie direkt in der Funktion des betreffenden Literal selbst zu definieren. Dies geschieht mithilfe des Enumerierungstags entry, welches das obligatorische Attribut name= (Schlüssel) und das fakultative Attribut value= (Ersetzungswert).</description>
+    </item>
+    
+  </channel>
+</rss>

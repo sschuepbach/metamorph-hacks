@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/00_einfuehrung/</loc>
+    <lastmod>2018-08-10T20:32:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/</loc>
+    <lastmod>2018-08-10T21:22:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/datenfelder/</loc>
+    <lastmod>2018-08-10T20:51:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/transformationen/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/filter/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/nachschlagetabellen/</loc>
+    <lastmod>2018-08-13T13:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/20_collectors/</loc>
+    <lastmod>2018-08-10T22:23:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/20_collectors/uebersicht/</loc>
+    <lastmod>2018-08-10T22:23:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/20_collectors/ausgabesteuerung/</loc>
+    <lastmod>2018-08-10T22:24:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/20_collectors/if-anweisungen/</loc>
+    <lastmod>2018-08-13T15:53:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/</loc>
+    <lastmod>2018-08-13T17:27:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/rekursion/</loc>
+    <lastmod>2018-08-13T17:29:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/variablen/</loc>
+    <lastmod>2018-08-13T17:30:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/makros/</loc>
+    <lastmod>2018-08-13T17:30:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/includes/</loc>
+    <lastmod>2018-08-13T17:31:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/90_appendix/</loc>
+    <lastmod>2018-08-13T08:41:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/90_appendix/lsb-morphs/</loc>
+    <lastmod>2018-08-13T07:53:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/90_appendix/ressourcen/</loc>
+    <lastmod>2018-08-16T14:30:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/90_appendix/versionsgeschichte/</loc>
+    <lastmod>2018-08-16T14:29:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/</loc>
+    <lastmod>2018-08-10T20:51:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

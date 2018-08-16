@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-ch" lang="de-ch">
+<head>
+  <meta name="generator" content="Hugo 0.46" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Metamorph Hacks</title>
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://sschuepbach.github.io/metamorph-hacks/css/styles.css">
+  
+  <link href="https://sschuepbach.github.io/metamorph-hacks/index.xml" rel="alternate" type="application/rss+xml" title="Metamorph Hacks" />
+
+</head>
+<body>
+
+<div class="sidebar sidebar-default">
+    <div class="navigation">
+        <div>
+  linked-swissbib
+</div>
+
+        <h1 class="site-title"><a href="https://sschuepbach.github.io/metamorph-hacks/">Metamorph Hacks</a></h1>
+
+
+        <nav class="internal">
+            <ul>
+    
+        
+            
+    <li>
+        <a href="#einfuehrung">Einführung</a>
+    </li>
+
+
+
+        
+            
+    <li>
+        <a href="#grundlagen">Funktionen</a>
+        <ul>
+            
+            
+                <li><a href="#datenfelder">Werte auslesen</a></li>
+            
+                <li><a href="#transformationen">Transformationen</a></li>
+            
+                <li><a href="#filter">Filter</a></li>
+            
+                <li><a href="#nachschlagetabellen">Nachschlagetabellen</a></li>
+            
+        </ul>
+    </li>
+
+
+
+        
+            
+    <li>
+        <a href="#collectors">Collectors</a>
+        <ul>
+            
+            
+                <li><a href="#uebersicht-collectors">Übersicht collectors</a></li>
+            
+                <li><a href="#ausgabesteuerung">Ausgabesteuerung</a></li>
+            
+                <li><a href="#if-anweisungen">if-Anweisungen</a></li>
+            
+        </ul>
+    </li>
+
+
+
+        
+            
+    <li>
+        <a href="#modularisierung">Modularisierung</a>
+        <ul>
+            
+            
+                <li><a href="#rekursion">Rekursion</a></li>
+            
+                <li><a href="#variablen">Variablen</a></li>
+            
+                <li><a href="#makros">Makros</a></li>
+            
+                <li><a href="#includes">Includes</a></li>
+            
+        </ul>
+    </li>
+
+
+
+        
+            
+    <li>
+        <a href="#appendix">Appendix</a>
+        <ul>
+            
+            
+                <li><a href="#lsb-morphs">Morphs in linked-swissbib</a></li>
+            
+                <li><a href="#ressourcen">Ressourcen</a></li>
+            
+                <li><a href="#versionsgeschichte">Versionsgeschichte</a></li>
+            
+        </ul>
+    </li>
+
+
+
+        
+    
+</ul>
+
+        </nav>
+
+        <nav class="external">
+            <div class="external-title">Metamorph Hacks</div>
+            
+        </nav>
+    </div>
+
+    <div class="version">
+            generated on Aug 16, 2018
+    </div>
+</div>
+
+<div class="content">
+    
+        
+            
+    <section class="page" id="einfuehrung">
+    <h1>
+        <a href="#einfuehrung">Einführung</a>
+    </h1>
+    <div class="content">
+        
+
+<p>Dieses README beinhaltet Informationen zu Funktionen und <em>collectors</em> in
+Metamorph sowie eine Sammlung von Ansätzen (&ldquo;Hacks&rdquo;), wie komplexere
+Transformationsworkflows in Metamorph bewerkstelligt werden können.</p>
+
+<h2 id="generelle-hinweise-zu-metamorph-dateien">Generelle Hinweise zu Metamorph-Dateien</h2>
+
+<p>Metamorph-Dateien sind im XML-Format. Jede Metamorph-Regel muss innerhalb des
+<code>&lt;metamorph&gt;</code>-Elementes abgelegt werden:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;metamorph</span> <span style="color:#75af00">xmlns=</span><span style="color:#d88200">&#34;http://www.culturegraph.org/metamorph&#34;</span> <span style="color:#75af00">version=</span><span style="color:#d88200">&#34;1&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#75715e">&lt;!-- Hier kommen die Definitionen hin --&gt;</span>
+<span style="color:#f92672">&lt;/metamorph&gt;</span></code></pre></div>
+<p>Direkt unterhalb des <code>&lt;metamorph&gt;</code>-Elementes können folgende Elemente
+definiert werden:</p>
+
+<ul>
+<li><code>&lt;include&gt;</code>: <a href="#includes">Einbinden von externen Definitionen</a></li>
+<li><code>&lt;macros&gt;</code>: <a href="#makros">Dateiweite Funktionen</a></li>
+<li><code>&lt;maps&gt;</code>: Liste von <a href="#nachschlagetabellen">Nachschlagetabellen</a></li>
+<li><code>&lt;meta&gt;</code>: Metadaten der Datei: Gültige Kindelemente sind <code>&lt;name&gt;</code> und
+<code>&lt;annotation&gt;</code></li>
+<li><code>&lt;rules&gt;</code>: Tranformations- und Filterregeln (die den Hauptteil dieser
+Dokumentation ausmachen)</li>
+<li><code>&lt;vars&gt;</code>: <a href="#variablen">Dateiweite Konstanten</a></li>
+</ul>
+
+<p>Metamorph selbst hat zwei eigene Attribute:</p>
+
+<ul>
+<li><code>version</code>: Die Version des Metamorph-Schemas</li>
+<li><code>entityMarker</code>: Trennzeichen zwischen Entität und einem Literal
+(Standard: <code>.</code>)</li>
+</ul>
+
+    </div>
+</section>
+
+
+
+
+        
+            
+    <section class="page" id="grundlagen">
+    <h1>
+        <a href="#grundlagen">Funktionen</a>
+    </h1>
+    <div class="content">
+        <p>Folgend ein summarischer Überblick über die Grundlagen von Metafacture, wobei für eine ausführlichere Erläuterung auf die <a href="https://github.com/metafacture/metafacture-core/wiki/Metamorph-User-Guide">offizielle Dokumentation</a> verwiesen wird.</p>
+
+    </div>
+</section>
+
+    
+            
+                <section class="page" id="datenfelder">
+    <h1>
+        <a href="#datenfelder">Werte auslesen</a>
+    </h1>
+    <div class="content">
+        <p>Werte einzelner Datenfelder können mit der Funktion <code>data</code> ausgelesen werden.
+In ihrer einfachsten Form hat <code>data</code> ein Attribut, <code>source</code>, welches dem Namen
+des auszulesenden Feldes entspricht. Dabei können auch Wildcards verwendet
+werden, so <code>?</code> für ein beliebiges Zeichen und <code>*</code> für Sequenz arbiträrer
+Zeichen mit Länge 0-n. In dieser einfachsten Form - ausgeschrieben also bspw.
+<code>&lt;data source=&quot;100*.a&quot;/&gt;</code> - wird lediglich definiert, dass Werte in den
+Feldern, welche auf den Ausdruck <code>100*.a</code> passen, ebenso wie die Feldnamen
+unverändert übernommen werden sollen.</p>
+
+<p>Zudem gibt es für <code>source</code> zwei Variablen mit fixer Bedeutung:</p>
+
+<ul>
+<li><code>_id</code>: Liest die ID des Datensatzes aus.</li>
+<li><code>_else</code>: Prozessiert alle Literale, welche nicht durch eine andere
+Morph-Regel verarbeitet werden. Nützlich, wenn Literale nicht
+transformiert, aber auch nicht ausgefiltert werden sollen.</li>
+</ul>
+
+<p><code>data</code> nimmt aber noch ein zweites Attribut entgegen, <code>name</code>. Dadurch lassen
+sich Feldnamen umbenennen, während der Feldwert noch immer unverändert
+übernommen wird. Durch den Feldnamen <code>_id</code> wird die ID des Datensatzes
+überschrieben.</p>
+
+<div class="block note">
+    <p>Datenfelder mit Namen, die mit <code>@</code> beginnen, werden <a href="#rekursion">speziell</a> behandelt.</p>
+
+</div>
+
+
+<p>Schliesslich lassen sich auf Feldwerte eine Reihe von Transformationen und
+Filter anwenden.</p>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="transformationen">
+    <h1>
+        <a href="#transformationen">Transformationen</a>
+    </h1>
+    <div class="content">
+        
+
+<h2 id="compose-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-compose-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Compose.java"><code>compose</code></a></h2>
+
+<p>Fügt dem Wert ein Prä- (<code>prefix=</code>) und/oder ein Suffix (<code>postfix=</code>) hinzu</p>
+
+<h2 id="constant-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-constant-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Constant.java"><code>constant</code></a></h2>
+
+<p>Ersetzt Wert durch ein Literal (<code>value=</code>)</p>
+
+<h2 id="timestamp-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-timestamp-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Timestamp.java"><code>timestamp</code></a></h2>
+
+<p>Ersetzt Wert durch aktuellen Zeitstempel</p>
+
+<ul>
+<li><code>format</code>: Format des Zeitstempels gemäss
+<a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"><code>java.text.SimpleDateFormat</code></a></li>
+<li><code>timezone</code>: Zeitzone gemäss
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html"><code>java.util.TimeZone</code></a>
+(Standard: <code>UTC</code>)</li>
+<li><code>language</code>: Gebietsschema gemäss
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html"><code>java.util.Locale</code></a></li>
+</ul>
+
+<h2 id="substring-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-substring-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Substring.java"><code>substring</code></a></h2>
+
+<p>Extrahiert Substring basierend auf Indizes (<code>start=</code>, <code>end=</code>)</p>
+
+<h2 id="regexp-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-regexp-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Regexp.java"><code>regexp</code></a></h2>
+
+<p>Extrahiert einen Substring basierend auf einem regulären Ausdruck (<code>match=</code>).
+Rückwärtsreferenzen (<em>capture groups</em>) werden unterstützt, welche durch
+<code>format=&quot;${1..n}&quot;</code> wiederverwendet werden können. Syntax entspricht derjenigen
+von regulären Ausdrücken in Java</p>
+
+<h2 id="replace-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-replace-java-setreplace-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-setreplace-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Replace.java"><code>replace</code></a> / <a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/SetReplace.java"><code>setreplace</code></a></h2>
+
+<p>Ersetzt einen passenden Substring (<code>pattern=</code>) durch einen anderen Wert
+(<code>with=</code>). Reguläre Ausdrücke analog zu Java werden unterstützt. Durch
+<code>setreplace</code> lässt sich eine ganze lokale Ersetzungstabelle definieren
+(<code>&lt;entry name=&quot;ausdruck&quot; value=&quot;ersetzung&quot;/&gt;</code>) oder mithilfe von <code>map=</code> eine
+solche referenzieren.</p>
+
+<div class="block info">
+    <p>Für weitere Informationen siehe Abschnitt
+<a href="#nachschlagetabellen">&ldquo;Nachschlagetabellen&rdquo;</a></p>
+
+</div>
+
+
+<h2 id="lookup-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-lookup-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Lookup.java"><code>lookup</code></a></h2>
+
+<p>Analog zu <code>setreplace</code>, unterstützt aber nur statische Strings als
+Suchmuster. Mithilfe von <code>in=</code> kann alternativ auch eine Konkordanztabelle
+referenziert werden. <code>default=</code> definiert einen Standardwert, wenn Schlüssel
+nicht in Tabelle definiert ist.</p>
+
+<div class="block info">
+    <p>Für weitere Informationen siehe Abschnitt
+<a href="#nachschlagetabellen">&ldquo;Nachschlagetabellen&rdquo;</a></p>
+
+</div>
+
+
+<h2 id="case-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-case-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Case.java"><code>case</code></a></h2>
+
+<p>Zu Gross- (<code>upper</code>) bzw. Kleinschreibung (<code>lower</code>) (<code>to=</code>). Nimmt optional ein
+Sprach-Tag entgegen (<code>language=</code>)</p>
+
+<h2 id="trim-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-trim-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Trim.java"><code>trim</code></a></h2>
+
+<p>Schneidet Leerzeichen am Ende des Feldwertes ab</p>
+
+<h2 id="normalize-utf8-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-normalizeutf8-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/NormalizeUTF8.java"><code>normalize-utf8</code></a></h2>
+
+<p>Normalisierung basierend auf UTF-8 (v.a. für Umlaute)</p>
+
+<h2 id="dateformat-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-dateformat-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/DateFormat.java"><code>dateformat</code></a></h2>
+
+<p>Formatiert Datum</p>
+
+<ul>
+<li><code>inputformat</code>: Format des Inputdatums gemäss
+<a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html"><code>java.text.SimpleDateFormat</code></a></li>
+<li><code>outputformat</code>: Format des Ausgabedatums: <code>FULL</code>, <code>LONG</code> (Standard), <code>MEDIUM</code> oder
+<code>SHORT</code> (s. Beschreibung in
+<a href="https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html"><code>java.text.DateFormat</code></a>)</li>
+<li><code>era</code>: Epoche: <code>AUTO</code> (Standard), <code>AD</code> oder <code>BC</code></li>
+<li><code>removeLeadingZeros</code>: Entferne führende Nulle (Standard: <code>false</code>)</li>
+<li><code>language</code>: Gebietsschema gemäss
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html"><code>java.util.Locale</code></a></li>
+</ul>
+
+<h2 id="split-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-split-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Split.java"><code>split</code></a></h2>
+
+<p>Teilt Feldwert basierend auf regulärem Ausdruck (<code>delimiter=</code>) in Substrings</p>
+
+<h2 id="isbn-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-isbn-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/ISBN.java"><code>isbn</code></a></h2>
+
+<p>Transformationen von ISBN-Nummern. Das Attribut <code>to</code> akzeptiert drei Werte:
+<code>isbn10</code> für eine Umwandlung von ISBN13 zu ISBN10, <code>isbn13</code> für das Umgekehrte
+und <code>clean</code> für eine Bereinigung der Nummer. Optional können zudem die
+Attribute <code>verifyCheckDigit</code>, standardmässig <code>false</code>, und <code>errorString</code>
+gesetzt werden.</p>
+
+<h2 id="urlencode-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-urlencode-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/URLEncode.java"><code>urlencode</code></a></h2>
+
+<p>Enkodiert Wert als URL</p>
+
+<h2 id="htmlanchor-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-htmlanchor-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/HtmlAnchor.java"><code>htmlanchor</code></a></h2>
+
+<p>Baut aus Wert einen HTML-Link. Umfasst drei Attribute: <code>prefix</code> (zwingend),
+<code>postfix</code> und <code>title</code> (optional)</p>
+
+<h2 id="switch-name-value-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-switchnamevalue-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/SwitchNameValue.java"><code>switch-name-value</code></a></h2>
+
+<p>Vertauscht Feldname und -wert</p>
+
+<h2 id="script-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-script-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Script.java"><code>script</code></a></h2>
+
+<p>Wert wird zur Transformation einer Javascript-Funktion (<code>invoke=</code>) in einer
+externen Datei (<code>file=</code>) übergeben</p>
+
+<h2 id="java"><code>java</code></h2>
+
+<p>Wert wird zur Tranformation einer Java-Klasse (<code>class=</code>) übergeben. Werte
+aller weiteren Attribute werden einer gleichnamigen <em>setter</em>-Methode in der
+Klasse übergeben.</p>
+
+<h2 id="count-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-functions-count-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Count.java"><code>count</code></a></h2>
+
+<p>Ersetzt Wert durch Anzahl der spezifizierten Felder im Datensatz</p>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="filter">
+    <h1>
+        <a href="#filter">Filter</a>
+    </h1>
+    <div class="content">
+        
+
+<h2 id="whitelist-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-whitelist-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/WhiteList.java"><code>whitelist</code></a></h2>
+
+<p>Filtert Werte basierend auf einer Whitelist (nur gelistete Werte werden
+weitergeleitet)</p>
+
+<div class="block info">
+    <p>Für weitere Informationen siehe Abschnitt
+<a href="#nachschlagetabellen">&ldquo;Nachschlagetabellen&rdquo;</a></p>
+
+</div>
+
+
+<h2 id="blacklist-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-blacklist-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/BlackList.java"><code>blacklist</code></a></h2>
+
+<p>Filtert Werte basierend auf einer Blacklist (gelistete Werte werden
+geblockt)</p>
+
+<div class="block info">
+    <p>Für weitere Informationen siehe Abschnitt
+<a href="#nachschlagetabellen">&ldquo;Nachschlagetabellen&rdquo;</a></p>
+
+</div>
+
+
+<h2 id="equals-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-equals-java-not-equals-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-notequals-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Equals.java"><code>equals</code></a> / <a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/NotEquals.java"><code>not-equals</code></a></h2>
+
+<p>Literal wird nur dann weitergeleitet, wenn sein Wert gleich wie Wert in <code>string=</code> ist.
+Für <code>not-equals</code> gilt das Umgekehrte.</p>
+
+<h2 id="occurrence-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-occurrence-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Occurrence.java"><code>occurrence</code></a></h2>
+
+<p>Literal werden nur dann weitergeleitet, wenn sie mehr (<code>moreThan</code>) oder weniger
+oft (<code>lessThan</code>) als ein ein Wert (<code>only=</code>) vorkommen. Bsp.:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;fieldA&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;occurrence</span> <span style="color:#75af00">only=</span><span style="color:#d88200">&#34;moreThan 4&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/data&gt;</span></code></pre></div>
+<h2 id="unique-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-unique-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Unique.java"><code>unique</code></a></h2>
+
+<p>Filtert doppelte Werte</p>
+
+<ul>
+<li><code>in</code>: Gleiche Werte in Entität (<code>entity</code>) oder Datensatz (<code>record</code>,
+Standard)</li>
+<li><code>part</code>: Teile des Literals, die gleich sein müssen: <code>name</code>, <code>value</code>
+(Standard) oder <code>name-value</code></li>
+</ul>
+
+<div class="block note">
+    <p>Ein Wert in <code>part</code> abweichend von <code>value</code> ist nur dann sinnvoll, wenn
+<em>globs</em> für den Feldnamen verwendet werden.</p>
+
+</div>
+
+
+<h2 id="buffer-https-github-com-metafacture-metafacture-core-blob-master-metamorph-src-main-java-org-metafacture-metamorph-functions-buffer-java"><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Buffer.java"><code>buffer</code></a></h2>
+
+<p>Hält Literale zurück, bis <em>flush</em>-Bedingung (<code>flushWith=</code>) erfüllt wird.</p>
+
+<div class="block info">
+    <p>Für weitere Informationen zu <code>flushWith</code> siehe Abschnitt <a href="#ausgabesteuerung">&ldquo;Ausgabesteuerung&rdquo;</a>.</p>
+
+</div>
+
+
+    </div>
+</section>
+
+            
+                <section class="page" id="nachschlagetabellen">
+    <h1>
+        <a href="#nachschlagetabellen">Nachschlagetabellen</a>
+    </h1>
+    <div class="content">
+        <p>Nachschlagetabellen dienen zur Filterung oder Ersetzung bestimmter Werte und
+werden so von den Funktionen <code>whitelist</code> und <code>blacklist</code> sowie <code>setreplace</code> und
+<code>lookup</code> verwendet. Sie können in Metamorph an verschiedenen Stellen definiert
+werden:</p>
+
+<ul>
+<li>Wird die Nachschlagetabelle nur an einer einzigen Stelle benötigt, macht es
+Sinn, sie direkt in der Funktion <strong>des betreffenden Literal selbst</strong> zu
+definieren. Dies geschieht mithilfe des Enumerierungstags <code>entry</code>, welches das
+obligatorische Attribut <code>name=</code> (Schlüssel) und das fakultative Attribut
+<code>value=</code> (Ersetzungswert).</li>
+
+<li><p>Die vier erwähnten Funktionen haben auch ein fakultatives Attribut <code>map=</code>. Mit
+diesem kann eine <strong>im gesamten Morph verfügbare Tabelle</strong> referenziert werden, die in einem vom
+<code>&lt;rules&gt;</code>-Abschnitt separierten Tag <code>&lt;maps&gt;</code> definiert wird:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;maps&gt;</span>
+  <span style="color:#f92672">&lt;map&gt;</span>
+     <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;schluessel1&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;wert1&#34;</span><span style="color:#f92672">/&gt;</span>
+     <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;schluessel2&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;wert2&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/map&gt;</span>
+<span style="color:#f92672">&lt;/maps&gt;</span></code></pre></div></li>
+
+<li><p>Schliesslich kann ebenfalls im Tag <code>&lt;maps&gt;</code> analog zu <code>map</code> eine Reihe von <strong>externen
+Quellen</strong> als Nachschlagetabelle angegeben werden:</p>
+
+<ul>
+<li><code>javamap</code>: Java-Klasse, welche <code>java.util.Map</code> implementiert
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der Tabelle in Morph-Datei</li>
+<li><code>class</code> (obligatorisch): Klassenname mit vollem Pfad</li>
+<li>Alle weiteren Attribute werden als Parameter der Klasse
+interpretiert</li>
+</ul></li>
+<li><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/maps/FileMap.java"><code>filemap</code></a>: Textdatei, eine Zeile pro Schlüssel-Wert-Paar
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der Tabelle in Morph-Datei</li>
+<li><code>files</code> (obligatorisch): Pfade zu Dateien mit Tabellen, getrennt durch
+Leerzeichen</li>
+<li><code>separator</code>: Trennzeichen zwischen Schlüssel und Wert in Tabelle
+(Standard: <code>\t</code>)</li>
+</ul></li>
+<li><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/maps/RestMap.java"><code>restmap</code></a>: Abfrage einer REST-Schnittstelle
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der Tabelle in Morph-Datei</li>
+<li><code>url</code> (obligatorisch): URL der REST-Schnittstelle</li>
+</ul></li>
+<li><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/maps/SqlMap.java"><code>sqlmap</code></a>: SQL-Abfrage
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der Tabelle in Morph-Datei</li>
+<li><code>host</code>: Hostname (Standard: <code>localhost</code>)</li>
+<li><code>login</code> (obligatorisch): Benutzername</li>
+<li><code>password</code> (obligatorisch): Passwort</li>
+<li><code>database</code> (obligatorisch): Name der Datenbank</li>
+<li><code>query</code> (obligatorisch): Suchabfrage</li>
+<li><code>driver</code>: Datenbanktreiber (Standard: <code>com.mysql.jdbc.Driver</code>)</li>
+</ul></li>
+<li><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/maps/JndiSqlMap.java"><code>jndisqlmap</code></a>: SQL-Abfrage über die <a href="https://de.wikipedia.org/wiki/Java_Naming_and_Directory_Interface"><em>JNDI</em></a>-Schnittstelle
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der Tabelle in Morph-Datei</li>
+<li><code>datasource</code> (obligatorisch): Datenquelle</li>
+<li><code>query</code> (obligatorisch): Suchabfrage</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </div>
+</section>
+
+            
+
+
+
+        
+            
+    <section class="page" id="collectors">
+    <h1>
+        <a href="#collectors">Collectors</a>
+    </h1>
+    <div class="content">
+        <p>Mithilfe von <em>collectors</em> können Werte verschiedener Literalen
+aggregiert, gefiltert oder zusammengefasst werden. Fast alle von ihnen teilen sich zwei Eigenschaften:</p>
+
+<ul>
+<li>Der Zeitpunkt und die Art der Emission ihrer Werte ist
+<a href="#ausgabesteuerung">steuerbar</a>.</li>
+<li>Es ist möglich, sie nur dann auszuführen, wenn <a href="#if-anweisungen">gewisse Bedingungen</a> erfüllt
+sind.</li>
+</ul>
+
+<p>Zudem ist es für die <em>collectors</em> <code>combine</code>, <code>concat</code>, <code>equalsFilter</code>,
+<code>square</code>, <code>tuples</code>, <code>choose</code>, <code>range</code> und <code>group</code> möglich, mittels
+<code>&lt;postprocess&gt;</code> Literal-Funktionen auf das Ergebnis anzuwenden. Beispiel:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;neu&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${nachname}, ${vorname}&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feld1&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;vorname&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feld2&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;nachname&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;postprocess&gt;</span>
+    <span style="color:#f92672">&lt;trim/&gt;</span>
+    <span style="color:#f92672">&lt;case</span> <span style="color:#75af00">to=</span><span style="color:#d88200">&#34;upper&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/postprocess&gt;</span>
+<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
+    </div>
+</section>
+
+    
+            
+                <section class="page" id="uebersicht-collectors">
+    <h1>
+        <a href="#uebersicht-collectors">Übersicht collectors</a>
+    </h1>
+    <div class="content">
+        
+
+<p>Folgend eine Liste der verfügbare <em>collectors</em> in Metamorph.</p>
+
+<div class="block note">
+    <p>Die Attribute <code>flushWith</code>, <code>reset</code> und <code>sameEntity</code>, welche für die
+meisten <em>collectors</em> verwendet werden können, werden im <a href="#ausgabesteuerung">nächsten
+Abschnitt</a>
+beschrieben.</p>
+
+</div>
+
+
+<h2 id="combine-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-combine-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Combine.java"><code>combine</code></a></h2>
+
+<p>Fügt Literale gemäss einem Template zusammen. Nachfolgende Werte
+überschreiben vorangehenden Werte desselben Feldes.</p>
+
+<ul>
+<li><code>name</code> (erforderlich): Name des neuen Feldes</li>
+<li><code>value</code> (erforderlich): Template. Werte von Feldern können mit
+<code>${feldname}</code> eingefügt werden</li>
+</ul>
+
+<h2 id="concat-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-concat-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Concat.java"><code>concat</code></a></h2>
+
+<p>Fügt Literale in der angegebenen Reihenfolge in einem neuen Feld zusammen.
+Werte desselben Feldes werden konkateniert.</p>
+
+<ul>
+<li><code>name</code> (erforderlich): Name des neuen Feldes</li>
+<li><code>delimiter</code>: Trennzeichen zwischen einzelnen Literalen (Standard: <code>&quot;&quot;</code>)</li>
+<li><code>prefix</code>: Präfix des neuen Feldes</li>
+<li><code>postfix</code>: Suffix des neuen Feldes</li>
+<li><code>reverse</code>: Fügt neue Literale am Anfang statt am Ende des neuen Feldes
+hinzu</li>
+</ul>
+
+<h2 id="entity-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-entity-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Entity.java"><code>entity</code></a></h2>
+
+<p>Erstellt mit den definierten Literalen eine neue (Sub-)Entität.
+Nachfolgende Werte überschreiben vorangehende Werte desselben Feldes.</p>
+
+<p><code>name</code> definiert den Namen der Entität, der alternativ auch mit dem
+<code>entity-name</code>-Element definiert werden kann. Wird weder <code>name</code> noch
+<code>entity-name</code> angegeben, wird ein leerer Name gesendet.</p>
+
+<h2 id="square-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-square-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Square.java"><code>square</code></a></h2>
+
+<p>Fügt Literale zu allen möglichen nicht-permutierten Zweierkombinationen
+zusammen. Werte desselben Feldes werden nicht überschrieben.</p>
+
+<ul>
+<li><code>name</code> (erforderlich): Name der neuen 2er-Tupel</li>
+<li><code>delimiter</code> (erforderlich): Trennzeichen zwischen den ausgegebenen Literalen</li>
+<li><code>prefix</code>: Präfix der 2er-Tupel</li>
+<li><code>postfix</code>: Suffix der 2er-Tupel</li>
+</ul>
+
+<h2 id="tuples-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-tuples-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Tuples.java"><code>tuples</code></a></h2>
+
+<p>Gibt alle möglichen Kombinationen der definierten Literale aus.</p>
+
+<ul>
+<li><code>name</code> (erforderlich): Name der neuen Literale</li>
+<li><code>separator</code>: Trennzeichen zwischen den Literalen</li>
+</ul>
+
+<h2 id="group-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-group-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Group.java"><code>group</code></a></h2>
+
+<p>Gruppiert Literale und/oder <em>collectors</em>, normalerweise um ein gemeinsames Set an Funktionen auf sie anzuwenden.</p>
+
+<ul>
+<li><code>name</code>: Neuer gemeinsamer Name</li>
+<li><code>value</code>: Neuer gemeinsamer Wert</li>
+</ul>
+
+<h2 id="choose-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-choose-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Choose.java"><code>choose</code></a></h2>
+
+<p>Sendet nur einen Literal aus einer Gruppe weiter (mit abnehmender
+Priorität).</p>
+
+<ul>
+<li><code>name</code>: Name des neuen Literals</li>
+<li><code>value</code>: Wert des neuen Literals</li>
+</ul>
+
+<h2 id="range-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-range-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Range.java"><code>range</code></a></h2>
+
+<p>Wertet zwei aufeinanderfolgende Literale als ganze Zahlen aus, die den Start- und
+Endpunkt einer Zahlenreihe definieren. Alle Zahlen dieser Reihe werden
+anschliessend als Literale ausgegeben.</p>
+
+<ul>
+<li><code>name</code> (obligatorisch): Name der neuen Literale</li>
+<li><code>increment</code>: Inkrement (Standard: <code>1</code>)</li>
+</ul>
+
+<h2 id="equalsfilter-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-equalsfilter-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/EqualsFilter.java"><code>equalsFilter</code></a></h2>
+
+<p>Literale werden weitergeleitet, sofern alle Werte gleich sind.</p>
+
+<ul>
+<li><code>name</code> (obligatorisch): Name des neuen Literals</li>
+<li><code>value</code> (obligatorisch): Wert des neuen Literals</li>
+</ul>
+
+<h2 id="all-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-all-java-any-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-any-java-none-https-github-com-metafacture-metafacture-core-tree-master-metamorph-src-main-java-org-metafacture-metamorph-collectors-none-java"><a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/All.java"><code>all</code></a>, <a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Any.java"><code>any</code></a> &amp; <a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/None.java"><code>none</code></a></h2>
+
+<p>Überprüfen, ob angegebenen Literale vorhanden sind. Geben standardmässig eine
+unbenannte (änderbar mit <code>name=</code>) Variable mit <code>true</code> als Wert (änderbar mit
+<code>value=</code>) aus, insofern die jeweilige Bedingung zutrifft:</p>
+
+<ul>
+<li>Bei <code>all</code>: Alle Literale sind im Datensatz vorhanden</li>
+<li>Bei <code>any</code>: Mindestens ein Literal ist im Datensatz vorhanden</li>
+<li>Bei <code>none</code>: Kein Literal ist im Datensatz vorhanden</li>
+</ul>
+
+<p><div class="block note">
+    <p>Die Verwendung der drei Quantoren macht insbesondere Sinn im Zusammenhang mit
+<a href="#if-anweisungen"><code>if</code>-Anweisungen</a>.</p>
+
+</div>
+</p>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="ausgabesteuerung">
+    <h1>
+        <a href="#ausgabesteuerung">Ausgabesteuerung</a>
+    </h1>
+    <div class="content">
+        
+
+<p>Wann und wie <em>collectors</em> die gesammelten Werte weiterschicken, kann mit
+Hilfe von drei Parametern definiert werden: <code>flushWith</code>, <code>reset</code> und
+<code>sameEntity</code>.</p>
+
+<p><code>flushWith</code> definiert den Zeitpunkt, zu welchem der <em>collector</em> die Werte
+abschickt (<em>flush</em>). Dies kann entweder nach der Verarbeitung eines bestimmten Feldes (<code>flushWith=&quot;feldname&quot;</code>, Wildcards erlaubt) oder des gesamten Datensatzes sein (<code>flushWith=&quot;record&quot;</code>). Im Fall von <code>combine</code>,  <code>entity</code>, <code>equalsFilter</code> sowie den Quantoren <code>all</code>, <code>any</code> und <code>none</code> werden die gesammelten Werte standardmässig weitergeleitet, sobald für jedes Feld ein Wert vorhanden ist.</p>
+
+<div class="block warn">
+    <p>In einem <em>collector</em> gesammelte Werte werden <strong>nicht</strong> weitergeleitet, wenn
+die <code>flushWith</code>-Bedingung nicht eintritt. Dies ist der Fall, wenn</p>
+
+<ul>
+<li>der angegbene Feldname nicht vorhanden ist oder</li>
+<li>bei Standardeinstellung von <code>combine</code>, <code>entity</code>, <code>equalsFilter</code>, <code>all</code>, <code>any</code> und <code>none</code> der <em>collector</em> nicht gefüllt werden kann
+<em>collector</em> bis Ende des Datensatzes nicht gefüllt wird</li>
+</ul>
+
+<p>Enthält ein <em>collector</em> keine Werte bei Eintreffen der
+<code>flushWith</code>-Bedingung, passiert ebenfalls nichts.</p>
+
+</div>
+
+
+<p><code>reset</code> löscht alle gesammelten Werte, nachdem diese weitergeleitet wurden.
+Ist <code>reset=&quot;false&quot;</code>, werden also nach einem erstmaligen <em>flush</em> die aktuell
+im <em>collector</em> gespeicherten Werte bei <strong>jedem</strong> neu gesammelten Wert
+von Neuem abgeschickt!</p>
+
+<p><code>sameEntity</code> leitet nur Werte weiter, die in derselben Literalgruppe (<em>entity</em>) gesammelt wurden. Ist die Literalgruppe fertig prozessiert, ohne dass für jedes Feld ein Wert vorhanden ist, werden die gespeicherten Werte weggeworfen. Der <em>reset</em>-Mechanismus wird anderseits bei <code>sameEntity=&quot;true&quot;</code> unabhängig von der Einstellung des <code>reset</code>-Paraemters ausgelöst, konnte die <em>flush</em>-Bedingung in einer Literalgruppe erfüllt werden.</p>
+
+<div class="block warn">
+    <p>Im Fall von <code>combine</code> und <code>entity</code> überschreiben neue ältere Werte des
+gleichen Datenfeldes.</p>
+
+</div>
+
+
+<h2 id="standardeinstellungen-für-flushwith-reset-und-sameentity">Standardeinstellungen für <code>flushWith</code>, <code>reset</code> und <code>sameEntity</code></h2>
+
+<table>
+<thead>
+<tr>
+<th>Collector</th>
+<th>flushWith</th>
+<th>reset</th>
+<th>sameEntity</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong><code>combine</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>concat</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>entity</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>squares</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>tuples</code></strong></td>
+<td><code>record</code></td>
+<td>entfällt</td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>group</code></strong></td>
+<td>entfällt</td>
+<td>entfällt</td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>choose</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>range</code></strong></td>
+<td><code>record</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>equalsFilter</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>all</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>any</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>none</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="if-anweisungen">
+    <h1>
+        <a href="#if-anweisungen">if-Anweisungen</a>
+    </h1>
+    <div class="content">
+        <p>Mithilfe von <code>if</code>-Anweisungen lässt sich steuern, ob ein <em>collector</em> Werte
+ausgibt oder nicht. Die Syntax sieht folgendermassen aus:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;if&gt;</span>
+    <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;equals</span> <span style="color:#75af00">string=</span><span style="color:#d88200">&#34;wertA&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/data&gt;</span>
+  <span style="color:#f92672">&lt;/if&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
+<p>Wenn der Wert im <code>feldA</code> tatsächlich <code>wertA</code> ist, dann wird das Ergebnis
+von <code>${a}+${b}</code> ausgegeben, ansonsten nicht.</p>
+
+<p>In der if-Anweisung lässt sich jede <a href="#filter">Filter-Funktion</a> sowie die <em>collectors</em> <code>all</code>,
+<code>any</code> und <code>none</code> verwenden. Ein Beispiel mit <code>all</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;if&gt;</span>
+    <span style="color:#f92672">&lt;all&gt;</span>
+      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/all&gt;</span>
+  <span style="color:#f92672">&lt;/if&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
+<p>Wenn beide Literale einen Wert liefern, wird das Ergebnis von <code>${a}+${b}</code>
+weitergeleitet.</p>
+
+    </div>
+</section>
+
+            
+
+
+
+        
+            
+    <section class="page" id="modularisierung">
+    <h1>
+        <a href="#modularisierung">Modularisierung</a>
+    </h1>
+    <div class="content">
+        
+    </div>
+</section>
+
+    
+            
+                <section class="page" id="rekursion">
+    <h1>
+        <a href="#rekursion">Rekursion</a>
+    </h1>
+    <div class="content">
+        <p>Normalerweise wird ein Literal direkt nach seiner Verarbeitung an das nächste
+<em>command</em> weitergeleitet. Es ist durch eine spezielle Syntax - ein führendes
+<code>@</code> im Namen - allerdings möglich, Werte bis zum Prozessierungsende des
+Datensatzes im Cache zu halten:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;eingabename&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;@loop&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;@loop&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabename&#34;</span><span style="color:#f92672">/&gt;</span></code></pre></div>
+<p>Dadurch lassen sich verschiedene Probleme lösen, so:</p>
+
+<ul>
+<li>Eine initiale Verarbeitung eines Literals lässt sich zentral definieren, die
+Ausgabe lässt sich an verschiedenen Orten im Morph wiederverwenden
+(beispielsweise in einem <em>collector</em>)</li>
+<li>Das Ergebnis eines <em>collector</em>, der vor Ende des Datensatzes &ldquo;geflusht&rdquo; werden muss, soll in einem anderen <em>collector</em> genutzt werden</li>
+</ul>
+
+<div class="block warn">
+    <p>Literale im Cache müssen bei jeder Wiederverwendung <strong>umbenannt</strong> werden, da
+sonst eine unendliche Schleife entsteht (aka ein <code>StackOverflowError</code>).</p>
+
+</div>
+
+
+<div class="block note">
+    <p>Ein literales <code>@</code> als erstes Zeichen eines Feldnamens ist möglich, wenn es
+durch einen vorangehenden <code>\</code> seiner speziellen Bedeutung &ldquo;beraubt&rdquo;
+wird (das <code>\</code> erscheint anschliessend nicht mehr im Namen). Das <code>\</code> ist
+nicht notwendig, wenn sich das betreffende Literal bzw. der betreffende
+<em>collector</em> innerhalb eines Eltern-<em>collectors</em> befindet (siehe dazu auch
+nächste Box).</p>
+
+</div>
+
+
+<div class="block warn">
+    <p>Literale bzw. <em>collectors</em>, welche innerhalb eines <em>collectors</em> in die Rekursion geschickt werden, werden gleichzeitig immer auch literal weitergeleitet (also bspw. als <code>(&quot;@feldname&quot;: &quot;feldwert&quot;)</code>). Da dieses Verhalten ist in der Regel nicht gewünscht, deshalb sollten Rekursionen grundsätzlich ausserhalb von Eltern-<em>collectors</em> definiert werden.</p>
+
+</div>
+
+
+<div class="block note">
+    <p>Rekursion mit der <code>@</code>-Syntax kann das Problem nicht vollständig beheben, dass
+Literale in der Reihenfolge abgearbeitet werden, in der sie in das
+<em>morph-command</em> geschickt werden. So ist es beispielsweise meines Wissens nicht
+möglich, alle Werte mit demselben Feldnamen in einem <em>collector</em>
+wiederzuverwenden.</p>
+
+</div>
+
+
+    </div>
+</section>
+
+            
+                <section class="page" id="variablen">
+    <h1>
+        <a href="#variablen">Variablen</a>
+    </h1>
+    <div class="content">
+        <p>Werte in Metamorph sind bis zu einem gewissen Grad dynamisierbar, indem
+sie als Parameter in der Flux-Datei oder über die Kommandozeile dem
+Programm übergeben werden. Dazu ist es notwendig, dass in der Flux-Datei
+das <code>morph</code>-<em>command</em> so angepasst wird, dass solche Parameter
+automatisch der <code>Metamorph</code>-Klasse übergeben werden:</p>
+
+<pre><code>morph(morphdatei, *)
+</code></pre>
+
+<p>Anschliessend können arbiträre Parameter in Flux definiert werden:</p>
+
+<pre><code>default var1 = &quot;wert1&quot;;
+default var2 = &quot;wert2&quot;;
+// Flux-Commands...
+</code></pre>
+
+<p><code>default</code> verhindert, dass bereits auf der Kommandozeile definierte
+Parameter überschrieben werden. Letzteres kann folgendermassen
+bewerkstelligt werden:</p>
+
+<pre><code>./flux.sh fluxdatei var1=wert1 var2=wert2
+</code></pre>
+
+<p>In Metamorph werden so übergebene Parameter mittels <code>$[variablenname]</code> etc.
+ausgelesen, also beispielsweise:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;_id&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;constant</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;$[var1]&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/data&gt;</span></code></pre></div>
+<p>Selbstredend können solche Variablen überall dort in
+Metamorph-Definitionen verwendet werden, wo auch Werte definiert werden können.</p>
+
+<p>Schliesslich lassen sich in Metamorph auch noch Standardwerte für
+Variablen definieren. Dies geschieht in einem vom <code>&lt;rules&gt;</code>-Element
+separierten <code>&lt;vars&gt;</code>-Tag:</p>
+
+<pre><code>&lt;vars&gt;
+  &lt;var name=&quot;var1&quot; value=&quot;wert1&quot;/&gt;
+  &lt;var name=&quot;var2&quot; value=&quot;wert2&quot;/&gt;
+&lt;/vars&gt;
+&lt;!-- &lt;rules&gt; ... --&gt;
+</code></pre>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="makros">
+    <h1>
+        <a href="#makros">Makros</a>
+    </h1>
+    <div class="content">
+        <p>Noch einen Schritt weiter als Variablen hinsichtlich der
+Wiederverwendbarkeit gehen Makros. Mit ihnen lassen sich
+eigentliche parametrisierbare Funktionen innerhalb der Morph-Datei definieren. Wie Variablen werden sie ausserhalb des <code>&lt;rules&gt;</code>-Elementes definiert, in diesem Fall im <code>&lt;macros&gt;</code>-Tag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;macros&gt;</span>
+  <span style="color:#f92672">&lt;macro</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;eindeutiger_name&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#75715e">&lt;!-- Makro --&gt;</span>
+  <span style="color:#f92672">&lt;/macro&gt;</span>
+  <span style="color:#75715e">&lt;!-- Weitere Makros --&gt;</span>
+<span style="color:#f92672">&lt;/macros&gt;</span>
+<span style="color:#75715e">&lt;!-- &lt;rules&gt; ... --&gt;</span></code></pre></div>
+<p>Ein Makro muss zwingend mit einem eindeutigen Namen (<code>name=</code>) versehen werden, damit es später im <code>&lt;rules&gt;</code>-Block aufgerufen werden kann.</p>
+
+<p>Makros können einen beliebigen Block an Metamorph-Definitionen
+enthalten, also Literale mit ihren Funktionen, <em>collectors</em> sowie eine Kombination davon. Parameter werden wie Variablen in eckigen Klammern mit führendem Dollarzeichen geschrieben (<code>$[param1]</code>). Ein Beispiel eines einfachen Makros:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;macro</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;makro1&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;concat</span> <span style="color:#75af00">delimiter=</span><span style="color:#d88200">&#34; &#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;$[ccName]&#34;</span> <span style="color:#75af00">flushWith=</span><span style="color:#d88200">&#34;$[abschickenMit]&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;$[dsSource]&#34;</span> <span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;case</span> <span style="color:#75af00">to=</span><span style="color:#d88200">&#34;upper&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/data&gt;</span>
+  <span style="color:#f92672">&lt;/concat&gt;</span>
+<span style="color:#f92672">&lt;/macro&gt;</span></code></pre></div>
+<p>Makros werden mit dem Element <code>&lt;call-macro&gt;</code> aufgerufen. <code>call-macro</code> umfasst
+ein obligatorisches Attribut, der Name des Makros (<code>name=</code>). Alle weiteren
+Attribute werden als Argumente des Makros interpretiert. Das obige Makro wird also beispielsweise folgendermassen aufgerufen&gt;</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;name&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${vorname} ${nachname}&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;call-macro</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;makro1&#34;</span> <span style="color:#75af00">ccName=</span><span style="color:#d88200">&#34;vorname&#34;</span> <span style="color:#75af00">dsName=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">abschickenMit=</span><span style="color:#d88200">&#34;nachname&#34;</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;nachname&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
+    </div>
+</section>
+
+            
+                <section class="page" id="includes">
+    <h1>
+        <a href="#includes">Includes</a>
+    </h1>
+    <div class="content">
+        <p>Um Code-Blöcke nicht nur innerhalb einer Morph-Datei
+wiederzuverwenden, sondern auch zwischen Dateien zu teilen, können
+schliesslich sogenannte <em>XML inclusions</em> (oder kurz <a href="https://www.w3.org/TR/xinclude/"><em>XInclude</em></a>) verwendet werden. Solche <em>inclusions</em> sind möglich direkt im <code>&lt;metamorph&gt;</code>-Element, aber auch als Kind-Elemente von <code>&lt;rules&gt;</code>, <code>&lt;maps&gt;</code> und <code>&lt;macros&gt;</code>. Das heisst also, einfügbare Bausteine können Definitionen, Mappings, Makros oder der vollständige Inhalt einer Morph-Datei sein.</p>
+
+<p>Bausteine und die sie verwendenden Morph-Definitionen sind zur Laufzeit
+eine einzige Einheit. Somit können beispielsweise Werte im Block in eine
+Rekursion geschickt werden und in der Hauptdatei wieder ausgelesen,
+oder in einem Block definierte Nachschlagetabellen in der Morph-Datei
+aufgerufen werden.</p>
+
+<div class="block note">
+    <p>Aus diesem Grund haben Blöcke nie ein <code>&lt;metamorph&gt;</code>- und, werden sie direkt
+in einem der Kindelemente verwendet, auch kein <code>&lt;rules&gt;</code>-, <code>&lt;maps&gt;</code>- oder
+<code>&lt;macros&gt;</code>-Element.</p>
+
+</div>
+
+
+<p>Eingefügt werden <em>XML inclusions</em> folgendermassen:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;include</span> <span style="color:#75af00">href=</span><span style="color:#d88200">&#34;pfad/zum/einzufuegenden/block.xml&#34;</span> <span style="color:#75af00">parse=</span><span style="color:#d88200">&#34;xml&#34;</span>
+	 <span style="color:#75af00">xmlns=</span><span style="color:#d88200">&#34;http://www.w3.org/2001/XInclude&#34;</span> <span style="color:#f92672">/&gt;</span></code></pre></div>
+<p>Während der Block beispielsweise so aussehen kann:</p>
+
+<pre><code>&lt;!-- block.xml --&gt;
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;map name=&quot;hauptorte&quot; xmlns=&quot;http://www.culturegraph.org/metamorph&quot;&gt;
+  &lt;entry name=&quot;Aargau&quot; value=&quot;Aarau&quot;/&gt;
+  &lt;entry name=&quot;Appenzell Ausserrhoden&quot; value=&quot;Herisau&quot;/&gt;
+  &lt;entry name=&quot;Appenzell Innerrhoden&quot; value=&quot;Appenzell&quot;/&gt;
+  &lt;entry name=&quot;Basel-Landschaft&quot; value=&quot;Liestal&quot;/&gt;
+	&lt;entry name=&quot;Basel-Stadt&quot; value=&quot;Basel&quot; /&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;
+</code></pre>
+
+    </div>
+</section>
+
+            
+
+
+
+        
+            
+    <section class="page" id="appendix">
+    <h1>
+        <a href="#appendix">Appendix</a>
+    </h1>
+    <div class="content">
+        
+    </div>
+</section>
+
+    
+            
+                <section class="page" id="lsb-morphs">
+    <h1>
+        <a href="#lsb-morphs">Morphs in linked-swissbib</a>
+    </h1>
+    <div class="content">
+        
+
+<h2 id="documentmorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-documentmorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/documentMorph.xml">documentMorph.xml</a></h2>
+
+<p>Erstellt Metadaten der Aufnahme. Pro <code>bibliographicRecord</code>-Ressource sollte
+auch eine <code>document</code>-Ressource vorhanden sein.</p>
+
+<h2 id="enrichedmorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-enrichedmorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/enrichedMorph.xml">enrichedMorph.xml</a></h2>
+
+<p>Verarbeitet Datensätze im <em>NTriples</em>-Format und transformiert sie zu
+<em>JSON-LD</em>. Datensatz-Typen sind &ldquo;Organisationen&rdquo; (siehe Anmerkungen dazu im Abschnitt &ldquo;organisationMorph.xml&rdquo;) und &ldquo;Personen&rdquo;. Aufgrund der Syntax-Spezifika von <em>NTriples</em> sowie für die
+Normalisierung der Inputdaten, welche aus heterogenen Quellen stammen
+(DBPedia, VIAF, vorverarbeitete Swissbib-Daten), müssen die meisten Werte
+modifiziert werden. Die drei wichtigsten Fälle, die jeweils in einem
+<code>&lt;macro&gt;</code>-Element definiert werden:</p>
+
+<ul>
+<li>Makro <code>year</code>: Jahresangaben sind immer nur auf das (vierstellige) Jahr genau, und nicht etwa in der Form <code>yyyy-mm-dd</code>.</li>
+<li>Makro <code>uri</code>: DBPedia-Links sollen immer zu <code>https://</code>-Links
+umgewandelt werden</li>
+<li>Makro <code>language-tag</code>: Das Sprach-Tag, welches in <em>NTriples</em> mit einem
+<code>@</code>-Trennzeichen an das Literal angefügt wird, wird abgetrennt und in ein
+eigenes Literal (<code>lang</code> überführt).</li>
+</ul>
+
+<p>Personen und &ldquo;Organsationen&rdquo; haben verschiedene JSON-LD-Kontexte. Daher
+gibt es zwei <code>&lt;combine&gt;</code>-Blöcke zur Erstellung des jeweiligen Kontextes, wo überprüft wird, ob es sich
+um einen Datensatz vom Typ <code>Person</code> oder <code>Organization</code> handelt. Je nach
+dem werden im betreffenden Kontext-Block die Daten weitergeleitet oder nicht.</p>
+
+<h2 id="itemmorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-itemmorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/itemMorph.xml">itemMorph.xml</a></h2>
+
+<p>Erstellt Exemplardaten primär basierend auf dem nicht-kanonischen MARC-Feld
+<code>949</code>. Hinweise:</p>
+
+<ul>
+<li>Die ID ist eine Kombination aus einem konstanten Präfix -
+<code>https://data.swissbib.ch/item/</code> -, dem Namen des Verbundes
+(Information aus Unterfeld <code>949??.B</code>) sowie einem eindeutigen Hash-Wert,
+der auf verschiedenen Werten aus den <code>949</code>er-Unterfeldern beruht. Der
+Hashwert wird mit der Klasse <a href="https://github.com/linked-swissbib/swissbib-metafacture-commands/blob/master/src/main/java/org/swissbib/linked/mf/morph/functions/ItemHash.java"><code>ItemHash</code></a> erstellt.</li>
+<li>In einer bibliographischen Aufnahme können selbstverständlich Daten zu
+mehreren Exemplaren vorhanden sein. Dazu wird ein spezielles Verfahren
+genutzt, welches Entitäten erstellt und in einem weiteren <em>command</em> diese
+zu eigenen <em>records</em> umwandelt. Für Details siehe Hinweis-Block unten.</li>
+<li>Der <code>&lt;combine&gt;</code>-Block, wo der Hashwert generiert wird, befindet sich
+ausserhalb des <code>&lt;entity&gt;</code>-Blocks. Grund dafür ist das spezielle
+Verhalten von Rekursionen, welche innerhalb von <em>collectors</em>
+initialisiert werden. Für Details siehe Hinweise im <a href="#rekursionen">entsprechenden
+Kapitel</a>.</li>
+<li>In einem weiteren <code>&lt;combine&gt;</code>-Element, <code>foaf:page</code>, wird ein Link zum
+Katalogisat im jeweiligen Katalog erstellt. Dazu werden verschiedene Werte
+an eine weitere Klasse zur Verarbeitung geschickt, <a href="https://github.com/linked-swissbib/swissbib-metafacture-commands/blob/master/src/main/java/org/swissbib/linked/mf/morph/functions/ItemLink.java"><code>ItemLink</code></a>.</li>
+</ul>
+
+<div class="block info">
+    <p>Ein wiederholt genutzte Methode für Extraktion von mehreren
+eigenständigen Ressourcen aus einer einzigen bibliographischen (Eingabe-)Ressource
+ist die Erstellung von Entitäten (<code>entity</code>) in der betreffenden Morph-Datei.
+Dieser <code>entity</code>-Block umfasst alle Literale, welche für die jeweilige
+Zielressource benötigt werden. Nach dem <code>morph</code>-<em>command</em> folgt
+<a href="https://github.com/linked-swissbib/swissbib-metafacture-commands/blob/master/src/main/java/org/swissbib/linked/mf/pipe/EntitySplitter.java"><code>entity-splitter</code></a>, das einzelne Entitäten eines Records einliest, diese aber als
+eigentständige Records wieder ausgibt. Mithilfe des Parameters
+<code>entityBoundary</code> lässt sich zudem für mehrfach geschachtelte Entitäten einstellen, ab welcher Stufe die Entitäten Records werden sollen.</p>
+
+</div>
+
+
+<h2 id="organisationmorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-organisationmorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/organisationMorph.xml">organisationMorph.xml</a></h2>
+
+<p>Erstellt &ldquo;Organisations&rdquo;-Entitäten (Organisationen, Institutionen, Kongresse
+etc.) auf Basis von Marc-Feld
+<a href="https://www.loc.gov/marc/bibliographic/concise/bd110.html"><code>110</code></a>,
+<a href="https://www.loc.gov/marc/bibliographic/concise/bd111.html"><code>111</code></a>,
+<a href="https://www.loc.gov/marc/bibliographic/concise/bd710.html"><code>710</code></a> oder
+<a href="https://www.loc.gov/marc/bibliographic/concise/bd711.html"><code>711</code></a>.</p>
+
+<ul>
+<li>Um solche Entitäten zu erstellen, wird der <code>entity</code>-<em>collector</em> verwendet.
+Solche Unter-Entitäten werden dann im nächsten Metafacture-Schritt zu
+eigenen Records &ldquo;aufgewertet&rdquo;. Für Details siehe Hinweis-Block in
+Abschnitt &ldquo;itemMorph.xml&rdquo;.</li>
+<li>Da der Identifier analog zu <code>resourceMorph.xml</code> und <code>organisationMorph.xml</code>
+mit dem Hash-Mechanismus erstellt wird, ist es für Entitäten aus den Feldern
+<code>110</code> und <code>111</code> zwingend, dass sie erst mit Unterfeld
+<a href="https://www.loc.gov/marc/bibliographic/concise/bd245.html"><code>245*.a</code></a>
+weitergeleitet werden.</li>
+<li>Damit eine Entität für Feld <code>110</code> oder <code>111</code> nicht &ldquo;aus Versehen&rdquo;
+weitergeleitet wird (sprich: es gibt in der Ressource gar kein
+entsprechendes Feld), ist es wichtig, dass alle Bestandteile des
+<em>collectors</em> nur getriggert werden, wenn tatsächlich ein entsprechendes
+(Unter-)Feld vorhanden ist. Denn wie im Kapitel
+&ldquo;<a href="#ausgabesteuerung">Ausgabesteuerung</a>&rdquo; beschrieben, wird ein <em>collector</em> auch bei einem expliziten <code>flushWith</code> nur weitergeleitet, wenn er nicht leer ist. Entsprechend abgesichert wird an verschiedenen Stellen: Alle Literale (auch Konstanten) haben als Source <code>110??</code>, <code>111??</code> oder eines ihrer Unterfelder; dasselbe gilt für Literale in Kind-<em>collectors</em>; schliesslich wird bei der Hashwert-Generierung in <a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash110.xml"><code>authorHash110</code></a> und <a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash111.xml"><code>authorHash111</code></a> mit einer <code>if</code>-Anweisung getetest, ob entsprechende Unterfelder vorhanden sind - ansonsten wird kein Hash (auch kein <code>NO_HASH</code>!) generiert.</li>
+<li>Dieselbe Vorsichtsmassnahme ist für Entitäten der Felder <code>710</code> und <code>711</code>
+nicht notwendig, da sie mit dem demselben Feld getriggert werden, aus dem
+sie ihre Werte beziehen.</li>
+</ul>
+
+<h2 id="personmorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-personmorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/personMorph.xml">personMorph.xml</a></h2>
+
+<p>Erstellt Personen-Entitäten auf Basis von MARC-Feld <a href="https://www.loc.gov/marc/bibliographic/concise/bd100.html"><code>100</code></a> (1.
+Indikator <code>0</code> oder <code>1</code>) oder <a href="https://www.loc.gov/marc/bibliographic/concise/bd700.html"><code>700</code></a> (1. Indikator dito). Der grundsätzlich Mechanismus ist derselbe wie bei <code>itemMorph.xml</code> und <code>organisationMorph.xml</code>: Literale werden pro relevantem Feld in <code>entity</code>-Blöcke zusammengefasst und anschliessend zu eigenständigen Ressourcen umgewandelt (für genauere Erläuterungen dazu s. Info-Box im Abschnitt zu <code>itemMorph.xml</code>). Zudem sind dieselben &ldquo;Sicherheitsmassnahmen&rdquo; wie bei <code>organisationMorph.xml</code> für Feld <code>100</code>-Fälle implementiert, um ein unabsichtliches Weiterleiten einer Entität ohne Werte aus dem entsprechenden Feld zu verhindern.</p>
+
+<h2 id="resourcemorph-xml-https-github-com-linked-swissbib-mfworkflows-blob-removed-mfrunner-transformation-indexworkflows-resourcemorph-xml"><a href="https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/resourceMorph.xml">resourceMorph.xml</a></h2>
+
+<p>Erstellt das eigentliche Katalogisat und linkt (bzw. wird verlinkt durch)
+die Ressourcen <code>Person</code>, <code>Organisation</code>, <code>Document</code>, <code>Item</code> sowie die separat
+erstellte <code>Work</code>.</p>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="ressourcen">
+    <h1>
+        <a href="#ressourcen">Ressourcen</a>
+    </h1>
+    <div class="content">
+        
+
+<h2 id="praxis">Praxis</h2>
+
+<ul>
+<li><a href="https://github.com/metafacture/metafacture-core">Metafacture-Code auf
+Github</a></li>
+<li><a href="https://github.com/metafacture/metafacture-core/wiki">Metafacture-Wiki</a></li>
+<li><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/resources/schemata/metamorph.xsd">Metamorph-Schema</a></li>
+<li><a href="https://github.com/culturegraph">Alte Metafacture-Organisation auf
+Github</a></li>
+<li><a href="https://github.com/culturegraph/metafacture-examples">Metafacture: Beispiele</a></li>
+<li><a href="https://github.com/hbz/metafacture-java-examples">Metafacture Java Examples</a></li>
+<li><a href="https://hub.docker.com/r/sschuepbach/metafacture-runner/">Docker Image für Metafacture Standalone (experimentell)</a></li>
+</ul>
+
+<h2 id="theorie">Theorie</h2>
+
+<ul>
+<li><a href="http://swib.org/swib13/slides/boehme_swib13_131.pdf">Analysis of library metadata with Metafacture</a> (Vortrag Christoph Böhme)</li>
+<li><a href="http://dlib.org/dlib/may15/boehme/05boehme.html">Metamorph: A Transformation Language for Semi-structured Data</a></li>
+<li><a href="http://b3e.net/metamorph-book/latest/datamodel.html">Das Metamorph-Datenmodell</a></li>
+</ul>
+
+<h2 id="linked-swissbib">linked-swissbib</h2>
+
+<ul>
+<li><a href="https://github.com/linked-swissbib">linked-swissbib-Organisation auf
+Github</a>, insbesondere:
+
+<ul>
+<li><a href="https://github.com/linked-swissbib/mfWorkflows">mfWorkflows</a>
+(Morph-Definitionen)</li>
+<li><a href="https://github.com/linked-swissbib/swissbib-metafacture-commands">swissbib-metafacture-commands</a> (linked-swissbib Plugin für Metafacture)</li>
+</ul></li>
+<li>Artikel-Reihe zu linked-swissbib:
+
+<ul>
+<li><a href="https://swissbib.blogspot.com/2016/04/swissbib-data-goes-linked-teil-1.html">Swissbib data goes linked 1: Metadatentransformation, Modellierung, Indexierung</a></li>
+<li><a href="https://swissbib.blogspot.com/2016/04/swissbib-data-goes-linked-teil-2.html">Swissbib data goes linked 2: Verlinkung und Anreicherung</a></li>
+<li><a href="https://swissbib.blogspot.com/2016/05/swissbib-data-goes-linked-teil-3.html">Swissbib data goes linked 3: Präsentation der angereicherten Daten</a></li>
+<li><a href="https://swissbib.blogspot.com/2016/07/swissbib-data-goes-linked-part-4-hydra.html">Swissbib data goes linked Teil 4: Hydra Web API for smarter clients</a></li>
+</ul></li>
+</ul>
+
+    </div>
+</section>
+
+            
+                <section class="page" id="versionsgeschichte">
+    <h1>
+        <a href="#versionsgeschichte">Versionsgeschichte</a>
+    </h1>
+    <div class="content">
+        
+
+<h2 id="0-09-16-08-18">0.09 (16.08.18)</h2>
+
+<p>Rohfassung</p>
+
+    </div>
+</section>
+
+            
+
+
+
+        
+    
+</div>
+</body>
+</html>
+

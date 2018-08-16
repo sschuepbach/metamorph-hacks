@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/</link>
+    <description>Recent content on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Fri, 10 Aug 2018 20:51:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Werte auslesen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/datenfelder/</link>
+      <pubDate>Fri, 10 Aug 2018 20:51:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/datenfelder/</guid>
+      <description>Werte einzelner Datenfelder können mit der Funktion data ausgelesen werden. In ihrer einfachsten Form hat data ein Attribut, source, welches dem Namen des auszulesenden Feldes entspricht. Dabei können auch Wildcards verwendet werden, so ? für ein beliebiges Zeichen und * für Sequenz arbiträrer Zeichen mit Länge 0-n. In dieser einfachsten Form - ausgeschrieben also bspw. &amp;lt;data source=&amp;quot;100*.a&amp;quot;/&amp;gt; - wird lediglich definiert, dass Werte in den Feldern, welche auf den Ausdruck 100*.</description>
+    </item>
+    
+    <item>
+      <title>Transformationen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/transformationen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/transformationen/</guid>
+      <description>compose Fügt dem Wert ein Prä- (prefix=) und/oder ein Suffix (postfix=) hinzu
+constant Ersetzt Wert durch ein Literal (value=)
+timestamp Ersetzt Wert durch aktuellen Zeitstempel
+ format: Format des Zeitstempels gemäss java.text.SimpleDateFormat timezone: Zeitzone gemäss java.util.TimeZone (Standard: UTC) language: Gebietsschema gemäss java.util.Locale  substring Extrahiert Substring basierend auf Indizes (start=, end=)
+regexp Extrahiert einen Substring basierend auf einem regulären Ausdruck (match=). Rückwärtsreferenzen (capture groups) werden unterstützt, welche durch format=&amp;quot;${1..n}&amp;quot; wiederverwendet werden können.</description>
+    </item>
+    
+    <item>
+      <title>Filter</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/filter/</guid>
+      <description>whitelist Filtert Werte basierend auf einer Whitelist (nur gelistete Werte werden weitergeleitet)
+Für weitere Informationen siehe Abschnitt &amp;ldquo;Nachschlagetabellen&amp;rdquo;
+ blacklist Filtert Werte basierend auf einer Blacklist (gelistete Werte werden geblockt)
+Für weitere Informationen siehe Abschnitt &amp;ldquo;Nachschlagetabellen&amp;rdquo;
+ equals / not-equals Literal wird nur dann weitergeleitet, wenn sein Wert gleich wie Wert in string= ist. Für not-equals gilt das Umgekehrte.
+occurrence Literal werden nur dann weitergeleitet, wenn sie mehr (moreThan) oder weniger oft (lessThan) als ein ein Wert (only=) vorkommen.</description>
+    </item>
+    
+    <item>
+      <title>Nachschlagetabellen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/nachschlagetabellen/</link>
+      <pubDate>Mon, 13 Aug 2018 13:39:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/10_funktionen/nachschlagetabellen/</guid>
+      <description>Nachschlagetabellen dienen zur Filterung oder Ersetzung bestimmter Werte und werden so von den Funktionen whitelist und blacklist sowie setreplace und lookup verwendet. Sie können in Metamorph an verschiedenen Stellen definiert werden:
+ Wird die Nachschlagetabelle nur an einer einzigen Stelle benötigt, macht es Sinn, sie direkt in der Funktion des betreffenden Literal selbst zu definieren. Dies geschieht mithilfe des Enumerierungstags entry, welches das obligatorische Attribut name= (Schlüssel) und das fakultative Attribut value= (Ersetzungswert).</description>
+    </item>
+    
+    <item>
+      <title>Übersicht collectors</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/20_collectors/uebersicht/</link>
+      <pubDate>Fri, 10 Aug 2018 22:23:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/20_collectors/uebersicht/</guid>
+      <description>Folgend eine Liste der verfügbare collectors in Metamorph.
+Die Attribute flushWith, reset und sameEntity, welche für die meisten collectors verwendet werden können, werden im nächsten Abschnitt beschrieben.
+ combine Fügt Literale gemäss einem Template zusammen. Nachfolgende Werte überschreiben vorangehenden Werte desselben Feldes.
+ name (erforderlich): Name des neuen Feldes value (erforderlich): Template. Werte von Feldern können mit ${feldname} eingefügt werden  concat Fügt Literale in der angegebenen Reihenfolge in einem neuen Feld zusammen.</description>
+    </item>
+    
+    <item>
+      <title>Ausgabesteuerung</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/20_collectors/ausgabesteuerung/</link>
+      <pubDate>Fri, 10 Aug 2018 22:24:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/20_collectors/ausgabesteuerung/</guid>
+      <description>Wann und wie collectors die gesammelten Werte weiterschicken, kann mit Hilfe von drei Parametern definiert werden: flushWith, reset und sameEntity.
+flushWith definiert den Zeitpunkt, zu welchem der collector die Werte abschickt (flush). Dies kann entweder nach der Verarbeitung eines bestimmten Feldes (flushWith=&amp;quot;feldname&amp;quot;, Wildcards erlaubt) oder des gesamten Datensatzes sein (flushWith=&amp;quot;record&amp;quot;). Im Fall von combine, entity, equalsFilter sowie den Quantoren all, any und none werden die gesammelten Werte standardmässig weitergeleitet, sobald für jedes Feld ein Wert vorhanden ist.</description>
+    </item>
+    
+    <item>
+      <title>if-Anweisungen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/20_collectors/if-anweisungen/</link>
+      <pubDate>Mon, 13 Aug 2018 15:53:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/20_collectors/if-anweisungen/</guid>
+      <description>Mithilfe von if-Anweisungen lässt sich steuern, ob ein collector Werte ausgibt oder nicht. Die Syntax sieht folgendermassen aus:
+&amp;lt;combine name=&amp;#34;ausgabe&amp;#34; value=&amp;#34;${a}+${b}&amp;#34;&amp;gt; &amp;lt;if&amp;gt; &amp;lt;data source=&amp;#34;feldA&amp;#34;&amp;gt; &amp;lt;equals string=&amp;#34;wertA&amp;#34;/&amp;gt; &amp;lt;/data&amp;gt; &amp;lt;/if&amp;gt; &amp;lt;data source=&amp;#34;feldA&amp;#34; name=&amp;#34;a&amp;#34;/&amp;gt; &amp;lt;data source=&amp;#34;feldB&amp;#34; name=&amp;#34;b&amp;#34;/&amp;gt; &amp;lt;/combine&amp;gt; Wenn der Wert im feldA tatsächlich wertA ist, dann wird das Ergebnis von ${a}+${b} ausgegeben, ansonsten nicht.
+In der if-Anweisung lässt sich jede Filter-Funktion sowie die collectors all, any und none verwenden. Ein Beispiel mit all:</description>
+    </item>
+    
+    <item>
+      <title>Rekursion</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/rekursion/</link>
+      <pubDate>Mon, 13 Aug 2018 17:29:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/rekursion/</guid>
+      <description>Normalerweise wird ein Literal direkt nach seiner Verarbeitung an das nächste command weitergeleitet. Es ist durch eine spezielle Syntax - ein führendes @ im Namen - allerdings möglich, Werte bis zum Prozessierungsende des Datensatzes im Cache zu halten:
+&amp;lt;data source=&amp;#34;eingabename&amp;#34; name=&amp;#34;@loop&amp;#34;/&amp;gt; &amp;lt;data source=&amp;#34;@loop&amp;#34; name=&amp;#34;ausgabename&amp;#34;/&amp;gt; Dadurch lassen sich verschiedene Probleme lösen, so:
+ Eine initiale Verarbeitung eines Literals lässt sich zentral definieren, die Ausgabe lässt sich an verschiedenen Orten im Morph wiederverwenden (beispielsweise in einem collector) Das Ergebnis eines collector, der vor Ende des Datensatzes &amp;ldquo;geflusht&amp;rdquo; werden muss, soll in einem anderen collector genutzt werden  Literale im Cache müssen bei jeder Wiederverwendung umbenannt werden, da sonst eine unendliche Schleife entsteht (aka ein StackOverflowError).</description>
+    </item>
+    
+    <item>
+      <title>Variablen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/variablen/</link>
+      <pubDate>Mon, 13 Aug 2018 17:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/variablen/</guid>
+      <description>Werte in Metamorph sind bis zu einem gewissen Grad dynamisierbar, indem sie als Parameter in der Flux-Datei oder über die Kommandozeile dem Programm übergeben werden. Dazu ist es notwendig, dass in der Flux-Datei das morph-command so angepasst wird, dass solche Parameter automatisch der Metamorph-Klasse übergeben werden:
+morph(morphdatei, *)  Anschliessend können arbiträre Parameter in Flux definiert werden:
+default var1 = &amp;quot;wert1&amp;quot;; default var2 = &amp;quot;wert2&amp;quot;; // Flux-Commands...  default verhindert, dass bereits auf der Kommandozeile definierte Parameter überschrieben werden.</description>
+    </item>
+    
+    <item>
+      <title>Makros</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/makros/</link>
+      <pubDate>Mon, 13 Aug 2018 17:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/makros/</guid>
+      <description>Noch einen Schritt weiter als Variablen hinsichtlich der Wiederverwendbarkeit gehen Makros. Mit ihnen lassen sich eigentliche parametrisierbare Funktionen innerhalb der Morph-Datei definieren. Wie Variablen werden sie ausserhalb des &amp;lt;rules&amp;gt;-Elementes definiert, in diesem Fall im &amp;lt;macros&amp;gt;-Tag:
+&amp;lt;macros&amp;gt; &amp;lt;macro name=&amp;#34;eindeutiger_name&amp;#34;&amp;gt; &amp;lt;!-- Makro --&amp;gt; &amp;lt;/macro&amp;gt; &amp;lt;!-- Weitere Makros --&amp;gt; &amp;lt;/macros&amp;gt; &amp;lt;!-- &amp;lt;rules&amp;gt; ... --&amp;gt; Ein Makro muss zwingend mit einem eindeutigen Namen (name=) versehen werden, damit es später im &amp;lt;rules&amp;gt;-Block aufgerufen werden kann.</description>
+    </item>
+    
+    <item>
+      <title>Includes</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/includes/</link>
+      <pubDate>Mon, 13 Aug 2018 17:31:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/30_modularisierung/includes/</guid>
+      <description>Um Code-Blöcke nicht nur innerhalb einer Morph-Datei wiederzuverwenden, sondern auch zwischen Dateien zu teilen, können schliesslich sogenannte XML inclusions (oder kurz XInclude) verwendet werden. Solche inclusions sind möglich direkt im &amp;lt;metamorph&amp;gt;-Element, aber auch als Kind-Elemente von &amp;lt;rules&amp;gt;, &amp;lt;maps&amp;gt; und &amp;lt;macros&amp;gt;. Das heisst also, einfügbare Bausteine können Definitionen, Mappings, Makros oder der vollständige Inhalt einer Morph-Datei sein.
+Bausteine und die sie verwendenden Morph-Definitionen sind zur Laufzeit eine einzige Einheit. Somit können beispielsweise Werte im Block in eine Rekursion geschickt werden und in der Hauptdatei wieder ausgelesen, oder in einem Block definierte Nachschlagetabellen in der Morph-Datei aufgerufen werden.</description>
+    </item>
+    
+    <item>
+      <title>Morphs in linked-swissbib</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/90_appendix/lsb-morphs/</link>
+      <pubDate>Mon, 13 Aug 2018 07:53:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/90_appendix/lsb-morphs/</guid>
+      <description>documentMorph.xml Erstellt Metadaten der Aufnahme. Pro bibliographicRecord-Ressource sollte auch eine document-Ressource vorhanden sein.
+enrichedMorph.xml Verarbeitet Datensätze im NTriples-Format und transformiert sie zu JSON-LD. Datensatz-Typen sind &amp;ldquo;Organisationen&amp;rdquo; (siehe Anmerkungen dazu im Abschnitt &amp;ldquo;organisationMorph.xml&amp;rdquo;) und &amp;ldquo;Personen&amp;rdquo;. Aufgrund der Syntax-Spezifika von NTriples sowie für die Normalisierung der Inputdaten, welche aus heterogenen Quellen stammen (DBPedia, VIAF, vorverarbeitete Swissbib-Daten), müssen die meisten Werte modifiziert werden. Die drei wichtigsten Fälle, die jeweils in einem &amp;lt;macro&amp;gt;-Element definiert werden:</description>
+    </item>
+    
+    <item>
+      <title>Ressourcen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/90_appendix/ressourcen/</link>
+      <pubDate>Thu, 16 Aug 2018 14:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/90_appendix/ressourcen/</guid>
+      <description> Praxis  Metafacture-Code auf Github Metafacture-Wiki Metamorph-Schema Alte Metafacture-Organisation auf Github Metafacture: Beispiele Metafacture Java Examples Docker Image für Metafacture Standalone (experimentell)  Theorie  Analysis of library metadata with Metafacture (Vortrag Christoph Böhme) Metamorph: A Transformation Language for Semi-structured Data Das Metamorph-Datenmodell  linked-swissbib  linked-swissbib-Organisation auf Github, insbesondere:  mfWorkflows (Morph-Definitionen) swissbib-metafacture-commands (linked-swissbib Plugin für Metafacture)  Artikel-Reihe zu linked-swissbib:  Swissbib data goes linked 1: Metadatentransformation, Modellierung, Indexierung Swissbib data goes linked 2: Verlinkung und Anreicherung Swissbib data goes linked 3: Präsentation der angereicherten Daten Swissbib data goes linked Teil 4: Hydra Web API for smarter clients   </description>
+    </item>
+    
+    <item>
+      <title>Versionsgeschichte</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/90_appendix/versionsgeschichte/</link>
+      <pubDate>Thu, 16 Aug 2018 14:29:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/90_appendix/versionsgeschichte/</guid>
+      <description>0.09 (16.08.18) Rohfassung</description>
+    </item>
+    
+  </channel>
+</rss>
