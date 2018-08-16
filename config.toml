@@ -1,3 +1,14 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseURL = "https://sschuepbach.github.io/metamorph-hacks/"
+languageCode = "de-ch"
+title = "Metamorph Hacks"
+theme = "kraiklyn"
+
+publishDir = "docs"
+
+pygmentsCodeFences = true
+pygmentsStyle = "monokailight"
+
+[params]
+externalTitle = "Metamorph Hacks"
+sidebarColor = "default"
+customCss = []
