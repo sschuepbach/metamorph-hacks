@@ -32,7 +32,7 @@ von Neuem abgeschickt!
 `sameEntity` leitet nur Werte weiter, die in derselben Literalgruppe (_entity_) gesammelt wurden. Ist die Literalgruppe fertig prozessiert, ohne dass für jedes Feld ein Wert vorhanden ist, werden die gespeicherten Werte weggeworfen. Der _reset_-Mechanismus wird anderseits bei `sameEntity="true"` unabhängig von der Einstellung des `reset`-Paraemters ausgelöst, konnte die _flush_-Bedingung in einer Literalgruppe erfüllt werden. 
 
 {{% block warn %}}
-Im Fall von `combine` und `entity` überschreiben neue ältere Werte des
+Im Fall von `combine` überschreiben neue ältere Werte des
 gleichen Datenfeldes.
 {{% /block %}}
 
