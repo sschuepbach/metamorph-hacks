@@ -2,7 +2,6 @@
 title: "Einführung"
 date: 2018-08-10T20:32:00+02:00
 anchor: "einfuehrung"
-weight: 1
 ---
 
 Dieses README beinhaltet Informationen zu Funktionen und _collectors_ in
@@ -24,14 +23,17 @@ Metamorph-Dateien sind im XML-Format. Jede Metamorph-Regel muss innerhalb des
 Direkt unterhalb des `<metamorph>`-Elementes können folgende Elemente
 definiert werden:
 
-- `<include>`: [Einbinden von externen Definitionen](#includes)
-- `<macros>`: [Dateiweite Funktionen](#makros)
-- `<maps>`: Liste von [Nachschlagetabellen](#nachschlagetabellen)
+- `<include>`: [Einbinden von externen Definitionen]({{< ref
+  "/modularisierung/includes.md" >}})
+- `<macros>`: [Dateiweite Funktionen]({{< ref
+  "/modularisierung/makros.md" >}})
+- `<maps>`: Liste von [Nachschlagetabellen]({{< ref "/funktionen/nachschlagetabellen.md" >}})
 - `<meta>`: Metadaten der Datei: Gültige Kindelemente sind `<name>` und
   `<annotation>`
 - `<rules>`: Tranformations- und Filterregeln (die den Hauptteil dieser
   Dokumentation ausmachen)
-- `<vars>`: [Dateiweite Konstanten](#variablen)
+- `<vars>`: [Dateiweite Konstanten]({{< ref
+  "/modularisierung/variablen.md" >}})
 
 Metamorph selbst hat zwei eigene Attribute:
 

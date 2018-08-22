@@ -49,12 +49,12 @@ zu eigenen _records_ umwandelt. Für Details siehe Hinweis-Block unten.
   ausserhalb des `<entity>`-Blocks. Grund dafür ist das spezielle
 Verhalten von Rekursionen, welche innerhalb von _collectors_
 initialisiert werden. Für Details siehe Hinweise im [entsprechenden
-Kapitel](#rekursionen).
+Kapitel]({{< ref "/modularisierung/rekursion.md" >}}).
 - In einem weiteren `<combine>`-Element, `foaf:page`, wird ein Link zum
   Katalogisat im jeweiligen Katalog erstellt. Dazu werden verschiedene Werte
 an eine weitere Klasse zur Verarbeitung geschickt, [`ItemLink`](https://github.com/linked-swissbib/swissbib-metafacture-commands/blob/master/src/main/java/org/swissbib/linked/mf/morph/functions/ItemLink.java).
 
-{{% block info %}}
+{{% notice info %}}
 Ein wiederholt genutzte Methode für Extraktion von mehreren
 eigenständigen Ressourcen aus einer einzigen bibliographischen (Eingabe-)Ressource
 ist die Erstellung von Entitäten (`entity`) in der betreffenden Morph-Datei.
@@ -63,7 +63,7 @@ Zielressource benötigt werden. Nach dem `morph`-_command_ folgt
 [`entity-splitter`](https://github.com/linked-swissbib/swissbib-metafacture-commands/blob/master/src/main/java/org/swissbib/linked/mf/pipe/EntitySplitter.java), das einzelne Entitäten eines Records einliest, diese aber als
 eigentständige Records wieder ausgibt. Mithilfe des Parameters
 `entityBoundary` lässt sich zudem für mehrfach geschachtelte Entitäten einstellen, ab welcher Stufe die Entitäten Records werden sollen.
-{{% /block %}}
+{{% /notice %}}
 
 ## [organisationMorph.xml](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/organisationMorph.xml)
 
@@ -88,7 +88,7 @@ weitergeleitet werden.
 entsprechendes Feld), ist es wichtig, dass alle Bestandteile des
 _collectors_ nur getriggert werden, wenn tatsächlich ein entsprechendes
 (Unter-)Feld vorhanden ist. Denn wie im Kapitel
-"[Ausgabesteuerung](#ausgabesteuerung)" beschrieben, wird ein _collector_ auch bei einem expliziten `flushWith` nur weitergeleitet, wenn er nicht leer ist. Entsprechend abgesichert wird an verschiedenen Stellen: Alle Literale (auch Konstanten) haben als Source `110??`, `111??` oder eines ihrer Unterfelder; dasselbe gilt für Literale in Kind-_collectors_; schliesslich wird bei der Hashwert-Generierung in [`authorHash110`](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash110.xml) und [`authorHash111`](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash111.xml) mit einer `if`-Anweisung getetest, ob entsprechende Unterfelder vorhanden sind - ansonsten wird kein Hash (auch kein `NO_HASH`!) generiert.
+"[Ausgabesteuerung]({{< ref "/collectors/ausgabesteuerung.md" >}})" beschrieben, wird ein _collector_ auch bei einem expliziten `flushWith` nur weitergeleitet, wenn er nicht leer ist. Entsprechend abgesichert wird an verschiedenen Stellen: Alle Literale (auch Konstanten) haben als Source `110??`, `111??` oder eines ihrer Unterfelder; dasselbe gilt für Literale in Kind-_collectors_; schliesslich wird bei der Hashwert-Generierung in [`authorHash110`](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash110.xml) und [`authorHash111`](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/morphModules/authorHash111.xml) mit einer `if`-Anweisung getetest, ob entsprechende Unterfelder vorhanden sind - ansonsten wird kein Hash (auch kein `NO_HASH`!) generiert.
 - Dieselbe Vorsichtsmassnahme ist für Entitäten der Felder `710` und `711`
   nicht notwendig, da sie mit dem demselben Feld getriggert werden, aus dem
 sie ihre Werte beziehen.

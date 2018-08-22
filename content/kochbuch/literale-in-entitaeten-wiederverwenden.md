@@ -37,9 +37,9 @@ _collector_ zur gleichen Zeit weitergeleitet wird wie die ihn umgebende
 `entity`, da ansonsten der in ihm aggregierte Wert nur einmal (nämlich wenn er
 das erste Mal gefüllt ist) "geflusht" wird.
 
-{{% block note %}}
+{{% notice note %}}
 Analoges gilt für `concat`.
-{{% /block %}}
+{{% /notice %}}
 
 ## Bemerkungen
 

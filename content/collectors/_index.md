@@ -9,8 +9,8 @@ Mithilfe von _collectors_ können Werte verschiedener Literalen
 aggregiert, gefiltert oder zusammengefasst werden. Fast alle von ihnen teilen sich zwei Eigenschaften:
 
 - Der Zeitpunkt und die Art der Emission ihrer Werte ist
-  [steuerbar](#ausgabesteuerung).
-- Es ist möglich, sie nur dann auszuführen, wenn [gewisse Bedingungen](#if-anweisungen) erfüllt
+  [steuerbar]({{< ref "/collectors/ausgabesteuerung.md" >}}).
+- Es ist möglich, sie nur dann auszuführen, wenn [gewisse Bedingungen]({{< ref "/collectors/if-anweisungen.md" >}}) erfüllt
   sind. 
 
 Zudem ist es für die _collectors_ `combine`, `concat`, `equalsFilter`,

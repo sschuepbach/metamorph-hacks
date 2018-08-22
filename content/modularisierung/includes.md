@@ -15,11 +15,11 @@ Rekursion geschickt werden und in der Hauptdatei wieder ausgelesen,
 oder in einem Block definierte Nachschlagetabellen in der Morph-Datei
 aufgerufen werden.
 
-{{% block note %}}
+{{% notice note %}}
 Aus diesem Grund haben Blöcke nie ein `<metamorph>`- und, werden sie direkt
 in einem der Kindelemente verwendet, auch kein `<rules>`-, `<maps>`- oder
 `<macros>`-Element.
-{{% /block %}}
+{{% /notice %}}
 
 Eingefügt werden _XML inclusions_ folgendermassen:
 

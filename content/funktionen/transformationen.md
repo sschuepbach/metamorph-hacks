@@ -38,10 +38,10 @@ Ersetzt einen passenden Substring (`pattern=`) durch einen anderen Wert
 (`<entry name="ausdruck" value="ersetzung"/>`) oder mithilfe von `map=` eine
 solche referenzieren.
 
-{{% block info %}}
+{{% notice info %}}
 Für weitere Informationen siehe Abschnitt
-["Nachschlagetabellen"](#nachschlagetabellen)
-{{% /block %}}
+["Nachschlagetabellen"]({{< ref "nachschlagetabellen.md" >}})
+{{% /notice %}}
 
 ## [`lookup`](https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Lookup.java)
 Analog zu `setreplace`, unterstützt aber nur statische Strings als
@@ -49,10 +49,10 @@ Suchmuster. Mithilfe von `in=` kann alternativ auch eine Konkordanztabelle
 referenziert werden. `default=` definiert einen Standardwert, wenn Schlüssel
 nicht in Tabelle definiert ist.
 
-{{% block info %}}
+{{% notice info %}}
 Für weitere Informationen siehe Abschnitt
-["Nachschlagetabellen"](#nachschlagetabellen)
-{{% /block %}}
+["Nachschlagetabellen"]({{< ref "nachschlagetabellen.md" >}})
+{{% /notice %}}
 
 ## [`case`](https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Case.java)
 Zu Gross- (`upper`) bzw. Kleinschreibung (`lower`) (`to=`). Nimmt optional ein

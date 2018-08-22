@@ -23,7 +23,7 @@ ausgibt oder nicht. Die Syntax sieht folgendermassen aus:
 Wenn der Wert im `feldA` tatsächlich `wertA` ist, dann wird das Ergebnis
 von `${a}+${b}` ausgegeben, ansonsten nicht.
 
-In der if-Anweisung lässt sich jede [Filter-Funktion](#filter) sowie die _collectors_ `all`,
+In der if-Anweisung lässt sich jede [Filter-Funktion]({{< ref "/funktionen/filter.md" >}}) sowie die _collectors_ `all`,
 `any` und `none` verwenden. Ein Beispiel mit `all`:
 
 

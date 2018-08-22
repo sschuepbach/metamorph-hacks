@@ -12,7 +12,7 @@ Hilfe von drei Parametern definiert werden: `flushWith`, `reset` und
 `flushWith` definiert den Zeitpunkt, zu welchem der _collector_ die Werte
 abschickt (_flush_). Dies kann entweder nach der Verarbeitung eines bestimmten Feldes (`flushWith="feldname"`, Wildcards erlaubt) oder des gesamten Datensatzes sein (`flushWith="record"`). Im Fall von `combine`,  `entity`, `equalsFilter` sowie den Quantoren `all`, `any` und `none` werden die gesammelten Werte standardmässig weitergeleitet, sobald für jedes Feld ein Wert vorhanden ist. 
 
-{{% block warn %}}
+{{% notice warning %}}
 In einem _collector_ gesammelte Werte werden __nicht__ weitergeleitet, wenn
 die `flushWith`-Bedingung nicht eintritt. Dies ist der Fall, wenn
 
@@ -22,7 +22,7 @@ die `flushWith`-Bedingung nicht eintritt. Dies ist der Fall, wenn
 
 Enthält ein _collector_ keine Werte bei Eintreffen der
 `flushWith`-Bedingung, passiert ebenfalls nichts.
-{{% /block %}}
+{{% /notice %}}
 
 `reset` löscht alle gesammelten Werte, nachdem diese weitergeleitet wurden.
 Ist `reset="false"`, werden also nach einem erstmaligen _flush_ die aktuell
@@ -31,10 +31,10 @@ von Neuem abgeschickt!
 
 `sameEntity` leitet nur Werte weiter, die in derselben Literalgruppe (_entity_) gesammelt wurden. Ist die Literalgruppe fertig prozessiert, ohne dass für jedes Feld ein Wert vorhanden ist, werden die gespeicherten Werte weggeworfen. Der _reset_-Mechanismus wird anderseits bei `sameEntity="true"` unabhängig von der Einstellung des `reset`-Paraemters ausgelöst, konnte die _flush_-Bedingung in einer Literalgruppe erfüllt werden. 
 
-{{% block warn %}}
+{{% notice warning %}}
 Im Fall von `combine` überschreiben neue ältere Werte des
 gleichen Datenfeldes.
-{{% /block %}}
+{{% /notice %}}
 
 ## Standardeinstellungen für `flushWith`, `reset` und `sameEntity`
 

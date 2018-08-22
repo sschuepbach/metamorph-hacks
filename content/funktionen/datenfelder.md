@@ -26,9 +26,9 @@ sich Feldnamen umbenennen, während der Feldwert noch immer unverändert
 übernommen wird. Durch den Feldnamen `_id` wird die ID des Datensatzes
 überschrieben. 
 
-{{% block note %}}
-Datenfelder mit Namen, die mit `@` beginnen, werden [speziell](#rekursion) behandelt.
-{{% /block %}}
+{{% notice note %}}
+Datenfelder mit Namen, die mit `@` beginnen, werden [speziell]({{< ref "/modularisierung/rekursion.md" >}}) behandelt.
+{{% /notice %}}
 
 Schliesslich lassen sich auf Feldwerte eine Reihe von Transformationen und
 Filter anwenden.

@@ -7,12 +7,12 @@ weight: 21
 
 Folgend eine Liste der verfügbare _collectors_ in Metamorph.
 
-{{% block note %}}
+{{% notice note %}}
 Die Attribute `flushWith`, `reset` und `sameEntity`, welche für die
 meisten _collectors_ verwendet werden können, werden im [nächsten
-Abschnitt](#ausgabesteuerung)
+Abschnitt]({{< ref "/collectors/ausgabesteuerung.md" >}})
 beschrieben.
-{{% /block %}}
+{{% /notice %}}
 
 ## [`combine`](https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/collectors/Combine.java)
 
@@ -102,7 +102,7 @@ unbenannte (änderbar mit `name=`) Variable mit `true` als Wert (änderbar mit
 - Bei `any`: Mindestens ein Literal ist im Datensatz vorhanden
 - Bei `none`: Kein Literal ist im Datensatz vorhanden
 
-{{% block note %}}
+{{% notice note %}}
 Die Verwendung der drei Quantoren macht insbesondere Sinn im Zusammenhang mit
-[`if`-Anweisungen](#if-anweisungen).
-{{% /block %}}
+[`if`-Anweisungen]({{< ref "/collectors/if-anweisungen.md" >}}).
+{{% /notice %}}
