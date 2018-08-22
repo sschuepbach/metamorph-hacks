@@ -29,7 +29,7 @@ enableMissingTranslationPlaceholders = false
 
 
 [params]
-editURL = "https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/"
+editURL = "https://github.com/sschuepbach/metamorph-hacks/edit/master/content/"
 showVisitedLinks = true # default is false
 themeStyle = "flex" # "original" or "flex" # default "flex"
 themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
@@ -47,23 +47,17 @@ home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
 pre = "<h3>More</h3>"
-name = "<i class='fa fa-github'></i> <label>Github repo</label>"
+name = "<i class='fa fa-github'></i> <label>Code</label>"
 identifier = "ds"
-url = "https://github.com/vjeantet/hugo-theme-docdock"
+url = "https://github.com/sschuepbach/metamorph-hacks"
 weight = 10
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
-url = "https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"
+name = "<i class='fa fa-github'></i> <label>Metafacture code</label>"
+url = "https://github.com/metafacture/metafacture-core"
 weight = 11
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
+name = "<i class='fa fa-bookmark'></i> <label>Metafacture wiki</label>"
+url = "https://github.com/metafacture/metafacture-core/wiki/"
 weight = 20
-
-[[menu.shortcuts]]
-name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
-url = "/credits"
-weight = 30
