@@ -4,9 +4,10 @@ languageCode = "de-ch"
 DefaultContentLanguage = "de"
 title = "Metamorph Hacks"
 theme = "docdock"
-# themesdir = "../.."
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
+
+publishDir = "docs/"
 
 defaultContentLanguage = "de"
 defaultContentLanguageInSubdir= false

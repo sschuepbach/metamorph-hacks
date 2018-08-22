@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anhang on Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/anhang/</link>
+    <description>Recent content in Anhang on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Mon, 13 Aug 2018 08:41:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/anhang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Morphs in linked-swissbib</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/anhang/lsb-morphs/</link>
+      <pubDate>Mon, 13 Aug 2018 07:53:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/lsb-morphs/</guid>
+      <description>documentMorph.xml Erstellt Metadaten der Aufnahme. Pro bibliographicRecord-Ressource sollte auch eine document-Ressource vorhanden sein.
+enrichedMorph.xml Verarbeitet Datensätze im NTriples-Format und transformiert sie zu JSON-LD. Datensatz-Typen sind &amp;ldquo;Organisationen&amp;rdquo; (siehe Anmerkungen dazu im Abschnitt &amp;ldquo;organisationMorph.xml&amp;rdquo;) und &amp;ldquo;Personen&amp;rdquo;. Aufgrund der Syntax-Spezifika von NTriples sowie für die Normalisierung der Inputdaten, welche aus heterogenen Quellen stammen (DBPedia, VIAF, vorverarbeitete Swissbib-Daten), müssen die meisten Werte modifiziert werden. Die drei wichtigsten Fälle, die jeweils in einem &amp;lt;macro&amp;gt;-Element definiert werden:</description>
+    </item>
+    
+    <item>
+      <title>Ressourcen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/anhang/ressourcen/</link>
+      <pubDate>Thu, 16 Aug 2018 14:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/ressourcen/</guid>
+      <description> Praxis  Metafacture-Code auf Github Metafacture-Wiki Metamorph-Schema Alte Metafacture-Organisation auf Github Metafacture: Beispiele Metafacture Java Examples Docker Image für Metafacture Standalone (experimentell)  Theorie  Analysis of library metadata with Metafacture (Vortrag Christoph Böhme) Metamorph: A Transformation Language for Semi-structured Data Das Metamorph-Datenmodell  linked-swissbib  linked-swissbib-Organisation auf Github, insbesondere:  mfWorkflows (Morph-Definitionen) swissbib-metafacture-commands (linked-swissbib Plugin für Metafacture)  Artikel-Reihe zu linked-swissbib:  Swissbib data goes linked 1: Metadatentransformation, Modellierung, Indexierung Swissbib data goes linked 2: Verlinkung und Anreicherung Swissbib data goes linked 3: Präsentation der angereicherten Daten Swissbib data goes linked Teil 4: Hydra Web API for smarter clients   </description>
+    </item>
+    
+    <item>
+      <title>Versionsgeschichte</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/anhang/versionsgeschichte/</link>
+      <pubDate>Thu, 16 Aug 2018 14:29:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/versionsgeschichte/</guid>
+      <description>0.09 (16.08.18) Rohfassung</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modularisierung on Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/modularisierung/</link>
+    <description>Recent content in Modularisierung on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Mon, 13 Aug 2018 17:27:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/modularisierung/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rekursion</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/modularisierung/rekursion/</link>
+      <pubDate>Mon, 13 Aug 2018 17:29:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/modularisierung/rekursion/</guid>
+      <description>Normalerweise wird ein Literal direkt nach seiner Verarbeitung an das nächste command weitergeleitet. Es ist durch eine spezielle Syntax - ein führendes @ im Namen - allerdings möglich, Werte bis zum Prozessierungsende des Datensatzes im Cache zu halten:
+&amp;lt;data source=&amp;#34;eingabename&amp;#34; name=&amp;#34;@loop&amp;#34;/&amp;gt; &amp;lt;data source=&amp;#34;@loop&amp;#34; name=&amp;#34;ausgabename&amp;#34;/&amp;gt; Dadurch lassen sich verschiedene Probleme lösen, so:
+ Eine initiale Verarbeitung eines Literals lässt sich zentral definieren, die Ausgabe lässt sich an verschiedenen Orten im Morph wiederverwenden (beispielsweise in einem collector) Das Ergebnis eines collector, der vor Ende des Datensatzes &amp;ldquo;geflusht&amp;rdquo; werden muss, soll in einem anderen collector genutzt werden  Literale im Cache müssen bei jeder Wiederverwendung umbenannt werden, da sonst eine unendliche Schleife entsteht (aka ein StackOverflowError).</description>
+    </item>
+    
+    <item>
+      <title>Variablen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/modularisierung/variablen/</link>
+      <pubDate>Mon, 13 Aug 2018 17:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/modularisierung/variablen/</guid>
+      <description>Werte in Metamorph sind bis zu einem gewissen Grad dynamisierbar, indem sie als Parameter in der Flux-Datei oder über die Kommandozeile dem Programm übergeben werden. Dazu ist es notwendig, dass in der Flux-Datei das morph-command so angepasst wird, dass solche Parameter automatisch der Metamorph-Klasse übergeben werden:
+morph(morphdatei, *)  Anschliessend können arbiträre Parameter in Flux definiert werden:
+default var1 = &amp;quot;wert1&amp;quot;; default var2 = &amp;quot;wert2&amp;quot;; // Flux-Commands...  default verhindert, dass bereits auf der Kommandozeile definierte Parameter überschrieben werden.</description>
+    </item>
+    
+    <item>
+      <title>Makros</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/modularisierung/makros/</link>
+      <pubDate>Mon, 13 Aug 2018 17:30:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/modularisierung/makros/</guid>
+      <description>Noch einen Schritt weiter als Variablen hinsichtlich der Wiederverwendbarkeit gehen Makros. Mit ihnen lassen sich eigentliche parametrisierbare Funktionen innerhalb der Morph-Datei definieren. Wie Variablen werden sie ausserhalb des &amp;lt;rules&amp;gt;-Elementes definiert, in diesem Fall im &amp;lt;macros&amp;gt;-Tag:
+&amp;lt;macros&amp;gt; &amp;lt;macro name=&amp;#34;eindeutiger_name&amp;#34;&amp;gt; &amp;lt;!-- Makro --&amp;gt; &amp;lt;/macro&amp;gt; &amp;lt;!-- Weitere Makros --&amp;gt; &amp;lt;/macros&amp;gt; &amp;lt;!-- &amp;lt;rules&amp;gt; ... --&amp;gt; Ein Makro muss zwingend mit einem eindeutigen Namen (name=) versehen werden, damit es später im &amp;lt;rules&amp;gt;-Block aufgerufen werden kann.</description>
+    </item>
+    
+    <item>
+      <title>Includes</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/modularisierung/includes/</link>
+      <pubDate>Mon, 13 Aug 2018 17:31:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/modularisierung/includes/</guid>
+      <description>Um Code-Blöcke nicht nur innerhalb einer Morph-Datei wiederzuverwenden, sondern auch zwischen Dateien zu teilen, können schliesslich sogenannte XML inclusions (oder kurz XInclude) verwendet werden. Solche inclusions sind möglich direkt im &amp;lt;metamorph&amp;gt;-Element, aber auch als Kind-Elemente von &amp;lt;rules&amp;gt;, &amp;lt;maps&amp;gt; und &amp;lt;macros&amp;gt;. Das heisst also, einfügbare Bausteine können Definitionen, Mappings, Makros oder der vollständige Inhalt einer Morph-Datei sein.
+Bausteine und die sie verwendenden Morph-Definitionen sind zur Laufzeit eine einzige Einheit. Somit können beispielsweise Werte im Block in eine Rekursion geschickt werden und in der Hauptdatei wieder ausgelesen, oder in einem Block definierte Nachschlagetabellen in der Morph-Datei aufgerufen werden.</description>
+    </item>
+    
+  </channel>
+</rss>

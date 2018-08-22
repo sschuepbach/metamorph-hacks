@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metamorph Hacks</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.46" />
+<title>Ausgabesteuerung :: Metamorph Hacks</title>
+<link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
+<link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
+<link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
+<link href="/metamorph-hacks/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/metamorph-hacks/css/bootstrap.min.css">
+<script src="/metamorph-hacks/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/sschuepbach.github.io\/metamorph-hacks";
+</script>
+<link rel="stylesheet" href="/metamorph-hacks/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/metamorph-hacks/collectors/ausgabesteuerung/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://sschuepbach.github.io/metamorph-hacks">Metamorph Hacks</a>
+  
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/vjeantet/hugo-theme-docdock"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"  rel="noopener">
+                  <i class='fa fa-cloud-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/metamorph-hacks/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/metamorph-hacks/" class="dd-item">
+          <a href="/metamorph-hacks/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/metamorph-hacks/funktionen/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/funktionen/">Funktionen</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/funktionen/datenfelder/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/funktionen/datenfelder/">
+            Werte auslesen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/funktionen/transformationen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/funktionen/transformationen/">
+            Transformationen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/funktionen/filter/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/funktionen/filter/">
+            Filter
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/funktionen/nachschlagetabellen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/funktionen/nachschlagetabellen/">
+            Nachschlagetabellen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/collectors/">Collectors</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/collectors/uebersicht/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/collectors/uebersicht/">
+            Übersicht collectors
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/collectors/ausgabesteuerung/" class="dd-item active">
+        <div>
+          <a href="/metamorph-hacks/collectors/ausgabesteuerung/">
+            Ausgabesteuerung
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/collectors/if-anweisungen/">
+            if-Anweisungen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/modularisierung/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/modularisierung/">Modularisierung</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/modularisierung/rekursion/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/modularisierung/rekursion/">
+            Rekursion
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/modularisierung/variablen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/modularisierung/variablen/">
+            Variablen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/modularisierung/makros/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/modularisierung/makros/">
+            Makros
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/modularisierung/includes/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/modularisierung/includes/">
+            Includes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/kochbuch/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/kochbuch/">Kochbuch</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/">
+            Literale in Entitäten wiederverwenden
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/anhang/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/anhang/">Anhang</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/anhang/lsb-morphs/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/anhang/lsb-morphs/">
+            Morphs in linked-swissbib
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/anhang/ressourcen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/anhang/ressourcen/">
+            Ressourcen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/anhang/versionsgeschichte/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/anhang/versionsgeschichte/">
+            Versionsgeschichte
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/metamorph-hacks/funktionen/" >
+   Funktionen</option>
+    <option value="/metamorph-hacks/collectors/" >
+   Collectors</option> 
+      <option value="/metamorph-hacks/collectors/uebersicht/" >- Übersicht collectors</option>
+      <option value="/metamorph-hacks/collectors/ausgabesteuerung/"  selected>- Ausgabesteuerung</option>
+      <option value="/metamorph-hacks/collectors/if-anweisungen/" >- if-Anweisungen</option>
+  
+    <option value="/metamorph-hacks/modularisierung/" >
+   Modularisierung</option>
+    <option value="/metamorph-hacks/kochbuch/" >
+   Kochbuch</option>
+    <option value="/metamorph-hacks/anhang/" >
+   Anhang</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="">
+        </div>
+        <script type="text/javascript" src="/metamorph-hacks/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/metamorph-hacks/js/auto-complete.js"></script>
+        <link href="/metamorph-hacks/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/sschuepbach.github.io\/metamorph-hacks";
+          
+        </script>
+        <script type="text/javascript" src="/metamorph-hacks/js/search.js"></script>
+      </div>
+    
+
+    <h1>Ausgabesteuerung</h1>
+    
+    
+    
+    
+
+<p>Wann und wie <em>collectors</em> die gesammelten Werte weiterschicken, kann mit
+Hilfe von drei Parametern definiert werden: <code>flushWith</code>, <code>reset</code> und
+<code>sameEntity</code>.</p>
+
+<p><code>flushWith</code> definiert den Zeitpunkt, zu welchem der <em>collector</em> die Werte
+abschickt (<em>flush</em>). Dies kann entweder nach der Verarbeitung eines bestimmten Feldes (<code>flushWith=&quot;feldname&quot;</code>, Wildcards erlaubt) oder des gesamten Datensatzes sein (<code>flushWith=&quot;record&quot;</code>). Im Fall von <code>combine</code>,  <code>entity</code>, <code>equalsFilter</code> sowie den Quantoren <code>all</code>, <code>any</code> und <code>none</code> werden die gesammelten Werte standardmässig weitergeleitet, sobald für jedes Feld ein Wert vorhanden ist.</p>
+
+<div class="notices warning" ><p>In einem <em>collector</em> gesammelte Werte werden <strong>nicht</strong> weitergeleitet, wenn
+die <code>flushWith</code>-Bedingung nicht eintritt. Dies ist der Fall, wenn</p>
+
+<ul>
+<li>der angegbene Feldname nicht vorhanden ist oder</li>
+<li>bei Standardeinstellung von <code>combine</code>, <code>entity</code>, <code>equalsFilter</code>, <code>all</code>, <code>any</code> und <code>none</code> der <em>collector</em> nicht gefüllt werden kann
+<em>collector</em> bis Ende des Datensatzes nicht gefüllt wird</li>
+</ul>
+
+<p>Enthält ein <em>collector</em> keine Werte bei Eintreffen der
+<code>flushWith</code>-Bedingung, passiert ebenfalls nichts.</p>
+</div>
+
+
+<p><code>reset</code> löscht alle gesammelten Werte, nachdem diese weitergeleitet wurden.
+Ist <code>reset=&quot;false&quot;</code>, werden also nach einem erstmaligen <em>flush</em> die aktuell
+im <em>collector</em> gespeicherten Werte bei <strong>jedem</strong> neu gesammelten Wert
+von Neuem abgeschickt!</p>
+
+<p><code>sameEntity</code> leitet nur Werte weiter, die in derselben Literalgruppe (<em>entity</em>) gesammelt wurden. Ist die Literalgruppe fertig prozessiert, ohne dass für jedes Feld ein Wert vorhanden ist, werden die gespeicherten Werte weggeworfen. Der <em>reset</em>-Mechanismus wird anderseits bei <code>sameEntity=&quot;true&quot;</code> unabhängig von der Einstellung des <code>reset</code>-Paraemters ausgelöst, konnte die <em>flush</em>-Bedingung in einer Literalgruppe erfüllt werden.</p>
+
+<div class="notices warning" ><p>Im Fall von <code>combine</code> überschreiben neue ältere Werte des
+gleichen Datenfeldes.</p>
+</div>
+
+
+<h2 id="standardeinstellungen-für-flushwith-reset-und-sameentity">Standardeinstellungen für <code>flushWith</code>, <code>reset</code> und <code>sameEntity</code></h2>
+
+<table>
+<thead>
+<tr>
+<th>Collector</th>
+<th>flushWith</th>
+<th>reset</th>
+<th>sameEntity</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong><code>combine</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>concat</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>entity</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>squares</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>tuples</code></strong></td>
+<td><code>record</code></td>
+<td>entfällt</td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>group</code></strong></td>
+<td>entfällt</td>
+<td>entfällt</td>
+<td>entfällt</td>
+</tr>
+
+<tr>
+<td><strong><code>choose</code></strong></td>
+<td><code>record</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>range</code></strong></td>
+<td><code>record</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>equalsFilter</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>all</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>any</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><strong><code>none</code></strong></td>
+<td>wenn vollständig</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/metamorph-hacks/collectors/uebersicht/" title="Übersicht collectors"> <i class="fa fa-chevron-left"></i><label>Übersicht collectors</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/collectors/if-anweisungen/" title="if-Anweisungen" style="margin-right: 0px;"><label>if-Anweisungen</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+    <div class="date">
+        <i class='fa fa-calendar'></i>  10/08/2018
+    </div>
+    
+
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/collectors/ausgabesteuerung.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/metamorph-hacks/js/clipboard.min.js"></script>
+
+<link href="/metamorph-hacks/css/featherlight.min.css" rel="stylesheet">
+<script src="/metamorph-hacks/js/featherlight.min.js"></script>
+
+
+
+<script src="/metamorph-hacks/theme-flex/script.js"></script>
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

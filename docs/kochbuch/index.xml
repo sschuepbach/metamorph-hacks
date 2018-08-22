@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kochbuch on Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/kochbuch/</link>
+    <description>Recent content in Kochbuch on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Tue, 21 Aug 2018 16:18:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/kochbuch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Literale in Entitäten wiederverwenden</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/</link>
+      <pubDate>Tue, 21 Aug 2018 16:22:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/</guid>
+      <description>Problem Ein Literal (litA) soll mit einem mehrfach vorhandenen weiteren Literal (litB) in einer Entität zusammenfügt werden, wobei für jedes litB eine Entität erstellt wird.
+Eingabe:
+{litA: wertA, litB: wertB, litB: wertC}  Erwartete Ausabe:
+{entAB {litA: wertA, litB: wertB} entAB {litA: wertA, litB: wertC}}  Lösung &amp;lt;entity name=&amp;#34;entAB&amp;#34; flushWith=&amp;#34;litB&amp;#34; reset=&amp;#34;true&amp;#34;&amp;gt; &amp;lt;combine name=&amp;#34;litA&amp;#34; value=&amp;#34;${litA}&amp;#34; flushWith=&amp;#34;litB&amp;#34;&amp;gt; &amp;lt;data source=&amp;#34;litA&amp;#34;/&amp;gt; &amp;lt;/combine&amp;gt; &amp;lt;data source=&amp;#34;litB&amp;#34; name=&amp;#34;litB&amp;#34;/&amp;gt; &amp;lt;/entity&amp;gt; litA wird in einem combine-collector &amp;ldquo;gespeichert&amp;rdquo;, der in diesem Fall wie ein Cache benutzt werden kann.</description>
+    </item>
+    
+  </channel>
+</rss>
