@@ -9,5 +9,4 @@ weight: 90
   "lsb-morphs.md" >}})
 * [Metafacture / Metamorph: Ressourcen im Internet]({{< ref
   "ressourcen.md" >}})
-* Glossar
-* [Versionsgeschichte Dokumentation]({{< ref "versionsgeschichte.md" >}})
+* Glossar (kommt noch)
