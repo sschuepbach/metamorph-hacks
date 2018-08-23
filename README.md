@@ -1,20 +1,27 @@
 # Metamorph-Hacks
 
-Dies ist die Codebasis von "Metamorph-Hacks", einer Doku zur
-gleichnamigen DSL von
-[Metafacture](https://github.com/metafacture/metafacture-core). Die
-eigentliche Doku befindet sich [hier](https://sschuepbach.github.io/metamorph-hacks).
+Hallo!
 
-Verbesserungs- und Ergänzungsvorschläge via [Issues](https://github.com/sschuepbach/metamorph-hacks/issues) und [Pull Requests](https://github.com/sschuepbach/metamorph-hacks/pulls) sind herzlich willkommen!
+Hier ist der nette Code von __"Metamorph-Hacks"__, einer
+inoffiziellen Dokumentation über
+Metamorph, einer DSL zur Transformation und zum Mapping bibliographischer Daten und Teil des Frameworks [Metafacture](https://github.com/metafacture/metafacture-core). Wenn Du die gerenderte Dokumentation suchst: Sie befindet sich [hier](https://sschuepbach.github.io/metamorph-hacks)!
 
-Um die Doku lokal zu rendern, ist eine Installation von [Hugo](https://gohugo.io/) notwendig. Anschliessend:
+## Verbessere mich
 
-1. Terminal starten und Repository klonen: `git clone
+Eine Dokumentation kann immer noch besser werden. Deshalb sind Verbesserungs- und Ergänzungsvorschläge via [Issues](https://github.com/sschuepbach/metamorph-hacks/issues) und [Pull Requests](https://github.com/sschuepbach/metamorph-hacks/pulls) sind herzlich willkommen! 
+
+Es ist auch möglich, einen PR direkt von der gerenderten Seite zu
+starten. Dazu einfach auf das kleine graue "Branch"-Logo ganz unten rechts
+klicken!
+
+## Lokale Installation
+
+Um die Dokumentation lokal anzeigen zu lassen, sind folgende Schritte notwendig:
+
+0. [Hugo](https://gohugo.io/) installieren
+1. Terminal starten und Repository _rekursiv_ klonen: `git clone
+   --recursive
    https://github.com/sschuepbach/metamorph-hacks`
 2. In das neu erstellte Verzeichnis wechseln: `cd metamorph-hacks`
-3. `themes`-Verzeichnis erstellen und in dieses wechseln: `mkdir themes
-   && cd themes`
-4. Theme (_krayklin_) klonen: `git clone https://github.com/jsnjack/kraiklyn`
-5. Zurück ins root-Verzeichnis wechseln: `cd ..`
-6. Hugo-Server starten: `hugo server`
-7. Doku im Browser mit `localhost:1313` aufrufen
+3. Hugo-Server starten: `hugo server`
+4. Doku im Browser mit `localhost:1313` aufrufen
