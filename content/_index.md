@@ -1,42 +1,42 @@
 ---
-title: "Einführung"
-date: 2018-08-10T20:32:00+02:00
-anchor: "einfuehrung"
+title: "Homepage"
+date: 2018-08-23T14:48:00+02:00
+anchor: "homepage"
 ---
 
-Dieses README beinhaltet Informationen zu Funktionen und _collectors_ in
-Metamorph sowie eine Sammlung von Ansätzen ("Hacks"), wie komplexere
-Transformationsworkflows in Metamorph bewerkstelligt werden können.
+Zur Datentransformation und zum Datenmapping im Rahmen des Projektes
+[_linked-swissbib_](https://github.com/linked-swissbib) verwenden wir fast
+ausschliesslich das Framework [Metafacture](https://github.com/metafacture).
+Da dieses Feld durchaus seine Schwierigkeiten und Tücken hat, ist auch die
+Handhabung des Frameworks nicht ganz einfach. Insbesondere der "Kern" von
+Metafacture, __Metamorph__, mit dem die Transformations- und Mappingregeln
+definiert werden, ist anspruchsvoll.  Auf Grundlage unserer Erfahrungen haben
+wir die vorliegende Dokumentation geschrieben.
 
-## Generelle Hinweise zu Metamorph-Dateien
+Im ersten Teil werden die Grundlagen von Metamorph vorgestellt: Bearbeitung
+einzelner _Literale_ (Schlüssel-Wert-Paare), Prozessierung von
+Literalverbünden (_collectors_) sowie die Wiedernutzung von einzelnen
+Literalen und Morph-Definitionen. Der Inhalt orientiert sich an der
+[offiziellen
+Metafacture-Dokumentation](https://github.com/metafacture/metafacture-core/wiki)
+und am [XML-Schema von
+Metamorph](https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/resources/schemata/metamorph.xsd),
+versucht aber auch, einzelne Konzepte, die uns nicht auf Anhieb klar waren,
+genauer zu beleuchten. 
 
-Metamorph-Dateien sind im XML-Format. Jede Metamorph-Regel muss innerhalb des
-`<metamorph>`-Elementes abgelegt werden:
+{{% notice info %}}
+Hinweise zu weiteren Metafacture-Ressourcen finden sich im
+[Anhang]({{< ref "anhang/ressourcen.md" >}})
+{{% /notice %}}
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<metamorph xmlns="http://www.culturegraph.org/metamorph" version="1">
-  <!-- Hier kommen die Definitionen hin -->
-</metamorph>
-```
+Da wir aus unseren Erfahrungen mit linked-swissbib gelernt haben, dass die korrekte
+Anwendung von Metamorph-Regeln in Einzelfällen tückisch sein kann, werden im
+zweiten Teil in Form eines "Kochbuches" "Rezepte" für einzelne
+Problemstellungen vorgestellt. Es versteht sich von selbst, dass dieser Teil
+keinen Anspruch auf Vollständigkeit erhebt. Ergänzungen sind natürlich
+herzlich willkommen. 
 
-Direkt unterhalb des `<metamorph>`-Elementes können folgende Elemente
-definiert werden:
-
-- `<include>`: [Einbinden von externen Definitionen]({{< ref
-  "/modularisierung/includes.md" >}})
-- `<macros>`: [Dateiweite Funktionen]({{< ref
-  "/modularisierung/makros.md" >}})
-- `<maps>`: Liste von [Nachschlagetabellen]({{< ref "/funktionen/nachschlagetabellen.md" >}})
-- `<meta>`: Metadaten der Datei: Gültige Kindelemente sind `<name>` und
-  `<annotation>`
-- `<rules>`: Tranformations- und Filterregeln (die den Hauptteil dieser
-  Dokumentation ausmachen)
-- `<vars>`: [Dateiweite Konstanten]({{< ref
-  "/modularisierung/variablen.md" >}})
-
-Metamorph selbst hat zwei eigene Attribute:
-
-- `version`: Die Version des Metamorph-Schemas
-- `entityMarker`: Trennzeichen zwischen Entität und einem Literal
-  (Standard: `.`)
+Im Anhang schliesslich finden sich neben einem Glossar und einer Liste von
+Ressourcen zu Metamorph/Metafacture im Netz auch eine Besprechung der in
+linked-swissbib verwendeten Metamorph-Definitionen. Dieser Abschnitt stellt
+eine Ergänzung zu den in den ersten beiden Teilen vorgestellten Inhalten dar.
