@@ -1,8 +1,17 @@
 ---
-title: "Funktionen"
+title: "Literale"
 date: 2018-08-10T21:22:00+02:00
-anchor: "grundlagen"
+anchor: "literale"
 weight: 10
 ---
 
-Folgend ein summarischer Überblick über die Grundlagen von Metafacture, wobei für eine ausführlichere Erläuterung auf die [offizielle Dokumentation](https://github.com/metafacture/metafacture-core/wiki/Metamorph-User-Guide) verwiesen wird.
+Dieser Teil beschäftigt sich mit den atomaren Einheiten, welche in Metamorph
+verarbeitet werden, Schlüssel-Wert-Paare oder _Literale_ genannt.
+
+## Inhalt
+
+- [Grundlagen]({{< ref "datenfelder.md" >}})
+- [Literale transformieren]({{< ref "transformationen.md" >}})
+- [Literale filtern]({{< ref "filter.md" >}})
+- [Literalwerte mappen]({{< ref "nachschlagetabellen.md" >}})
+
