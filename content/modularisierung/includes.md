@@ -22,14 +22,13 @@ in einem der Kindelemente verwendet, auch kein `<rules>`-, `<maps>`- oder
 {{% /notice %}}
 
 Eingefügt werden _XML inclusions_ folgendermassen:
-
 ```xml
 <include href="pfad/zum/einzufuegenden/block.xml" parse="xml"
 	 xmlns="http://www.w3.org/2001/XInclude" />
 ```
 
 Während der Block beispielsweise so aussehen kann:
-```
+```xml
 <!-- block.xml -->
 <?xml version="1.1" encoding="UTF-8"?>
 <map name="hauptorte" xmlns="http://www.culturegraph.org/metamorph">

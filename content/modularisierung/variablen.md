@@ -47,7 +47,7 @@ Schliesslich lassen sich in Metamorph auch noch Standardwerte für
 Variablen definieren. Dies geschieht in einem vom `<rules>`-Element
 separierten `<vars>`-Tag:
 
-```
+```xml
 <vars>
   <var name="var1" value="wert1"/>
   <var name="var2" value="wert2"/>
