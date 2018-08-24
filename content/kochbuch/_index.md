@@ -16,4 +16,5 @@ in Metamorph präsentiert.
   "ordnung-von-feldwerten-umdrehen.md" >}})
 - [Ordnung von Literalen ändern]({{< ref
   "ordnung-von-literalen-aendern.md" >}})
-
+- [Nur letzten Wert eines Literals berücksichtigen]({{< ref
+  "nur-letzten-wert-beruecksichtigen.md" >}})
