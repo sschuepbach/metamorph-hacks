@@ -8,13 +8,13 @@ weight: 41
 ## Problem
 Ein Literal (`litA`) soll mit einem mehrfach vorhandenen weiteren Literal (`litB`) in einer Entität zusammenfügt werden, wobei für jedes `litB` eine Entität erstellt wird.
 
-Eingabe:
+__Eingabe__
 
 ```
 {litA: wertA, litB: wertB, litB: wertC}
 ```
 
-Erwartete Ausabe:
+__Erwartete Ausabe__
 
 ```
 {entAB {litA: wertA, litB: wertB} entAB {litA: wertA, litB: wertC}}

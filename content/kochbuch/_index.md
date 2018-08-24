@@ -12,3 +12,8 @@ in Metamorph präsentiert.
 
 - [Literale in Entitäten wiederverwenden]({{< ref
   "literale-in-entitaeten-wiederverwenden.md" >}})
+- [Ordnung von Feldwerten in einem Literal umdrehen]({{< ref
+  "ordnung-von-feldwerten-umdrehen.md" >}})
+- [Ordnung von Literalen ändern]({{< ref
+  "ordnung-von-literalen-aendern.md" >}})
+
