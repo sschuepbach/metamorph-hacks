@@ -5,25 +5,11 @@ anchor: "collectors"
 weight: 20
 ---
 
-Mithilfe von _collectors_ können Werte verschiedener Literalen
-aggregiert, gefiltert oder zusammengefasst werden. Fast alle von ihnen teilen sich zwei Eigenschaften:
+In diesem Teil werden _collectors_ behandelt, welche Literale aggregieren und diese zu einem definierbaren Zeitpunkt weiterleiten können.
 
-- Der Zeitpunkt und die Art der Emission ihrer Werte ist
-  [steuerbar]({{< ref "/collectors/ausgabesteuerung.md" >}}).
-- Es ist möglich, sie nur dann auszuführen, wenn [gewisse Bedingungen]({{< ref "/collectors/if-anweisungen.md" >}}) erfüllt
-  sind. 
+## Inhalt
 
-Zudem ist es für die _collectors_ `combine`, `concat`, `equalsFilter`,
-`square`, `tuples`, `choose`, `range` und `group` möglich, mittels
-`<postprocess>` Literal-Funktionen auf das Ergebnis anzuwenden. Beispiel:
-
-```xml
-<combine name="neu" value="${nachname}, ${vorname}">
-  <data source="feld1" name="vorname"/>
-  <data source="feld2" name="nachname"/>
-  <postprocess>
-    <trim/>
-    <case to="upper"/>
-  </postprocess>
-</combine>
-```
+- [Übersicht]({{< ref "uebersicht.md" >}}) über vorhandene _collectors_
+- [Steuern]({{< ref
+  "ausgabesteuerung.md" >}}), wenn gesammelte Werte weitergeleitet werden
+- _collectors_ [bedingt]({{< ref "if-anweisungen.md" >}}) erstellen

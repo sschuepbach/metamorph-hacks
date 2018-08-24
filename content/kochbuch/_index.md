@@ -5,5 +5,10 @@ anchor: "kochbuch"
 weight: 40
 ---
 
-Komplementär zum ersten Teil werden im Kochbuch Lösungsstrategien für
-spezifische Probleme in Metamorph versammelt.
+In diesem Teil werden Lösungsstrategien ("Rezepte") für spezifische Probleme
+in Metamorph präsentiert.
+
+## Inhalt
+
+- [Literale in Entitäten wiederverwenden]({{< ref
+  "literale-in-entitaeten-wiederverwenden.md" >}})

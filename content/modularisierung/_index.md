@@ -5,5 +5,13 @@ anchor: modularisierung
 weight: 30
 ---
 
-Durch verschiedene Mechanismen lassen sich Metamorph-Definitionen
-wiederverwenden. Das folgende Kapitel stellt diese vor.
+Der Teil stellt verschiedene Methoden vor, wie Literale und
+Morph-Definitionen wiederverwendet werden können.
+
+## Inhalt
+
+- Mittels [Rekursion]({{< ref "rekursion.md" >}}) Literale
+  wiederverwenbar machen
+- [Variablen]({{< ref "variablen.md" >}}) nutzen
+- [Funktionen]({{< ref "makros.md" >}}) definieren
+- Morph-Dateien [modularisieren]({{< ref "includes.md" >}})

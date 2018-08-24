@@ -5,6 +5,10 @@ anchor: "anhang"
 weight: 90
 ---
 
+Zusätzliche Informationen
+
+## Inhalt
+
 * [Besprechung von Morph-Definitionen in linked-swissbib]({{< ref
   "lsb-morphs.md" >}})
 * [Metafacture / Metamorph: Ressourcen im Internet]({{< ref
