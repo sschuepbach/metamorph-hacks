@@ -35,7 +35,7 @@ definiert werden:
   "/modularisierung/includes.md" >}})
 - `<macros>`: [Dateiweite Funktionen]({{< ref
   "/modularisierung/makros.md" >}})
-- `<maps>`: Liste von [Nachschlagetabellen]({{< ref "/funktionen/nachschlagetabellen.md" >}})
+- `<maps>`: Liste von [Nachschlagetabellen]({{< ref "/literale/nachschlagetabellen.md" >}})
 - `<meta>`: Metadaten der Datei: Gültige Kindelemente sind `<name>` und
   `<annotation>`
 - `<rules>`: Tranformations- und Filterregeln (die den Hauptteil dieser
