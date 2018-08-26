@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.46" />
-<title>if-Anweisungen :: Metamorph Hacks</title>
+<title>Hinweise zu Codebeispielen :: Metamorph Hacks</title>
 <link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
 <link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
 <link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/metamorph-hacks/collectors/if-anweisungen/">
+  <body data-url="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/">
     
       <header>
   <div class="logo">
@@ -60,10 +60,11 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/metamorph-hacks/einfuehrung/" class="dd-item haschildren
+    <li data-nav-id="/metamorph-hacks/einfuehrung/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/einfuehrung/">Einführung</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/einfuehrung/">Einführung</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/einfuehrung/metamorph/" class="dd-item">
@@ -73,7 +74,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/" class="dd-item active">
         <div>
           <a href="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/">
             Hinweise zu Codebeispielen
@@ -118,11 +119,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item parent haschildren
+    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/collectors/">Collectors</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/collectors/">Collectors</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/collectors/uebersicht/" class="dd-item">
@@ -139,7 +139,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item active">
+      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/collectors/if-anweisungen/">
             if-Anweisungen
@@ -264,15 +264,14 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/metamorph-hacks/einfuehrung/" >
-   Einführung</option>
+   Einführung</option> 
+      <option value="/metamorph-hacks/einfuehrung/metamorph/" >- Metamorph</option>
+      <option value="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/"  selected>- Hinweise zu Codebeispielen</option>
+  
     <option value="/metamorph-hacks/literale/" >
    Literale</option>
     <option value="/metamorph-hacks/collectors/" >
-   Collectors</option> 
-      <option value="/metamorph-hacks/collectors/uebersicht/" >- Übersicht collectors</option>
-      <option value="/metamorph-hacks/collectors/ausgabesteuerung/" >- Ausgabesteuerung</option>
-      <option value="/metamorph-hacks/collectors/if-anweisungen/"  selected>- if-Anweisungen</option>
-  
+   Collectors</option>
     <option value="/metamorph-hacks/modularisierung/" >
    Modularisierung</option>
     <option value="/metamorph-hacks/kochbuch/" >
@@ -301,46 +300,103 @@
       </div>
     
 
-    <h1>if-Anweisungen</h1>
+    <h1>Hinweise zu Codebeispielen</h1>
     
     
     
-    <p>Mithilfe von <code>if</code>-Anweisungen lässt sich steuern, ob ein <em>collector</em> Werte
-ausgibt oder nicht. Die Syntax sieht folgendermassen aus:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;equals</span> <span style="color:#75af00">string=</span><span style="color:#d88200">&#34;wertA&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/data&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn der Wert im <code>feldA</code> tatsächlich <code>wertA</code> ist, dann wird das Ergebnis
-von <code>${a}+${b}</code> ausgegeben, ansonsten nicht.</p>
+    
 
-<p>In der if-Anweisung lässt sich jede <a href="https://sschuepbach.github.io/metamorph-hacks/literale/filter/">Filter-Funktion</a> sowie die <em>collectors</em> <code>all</code>,
-<code>any</code> und <code>none</code> verwenden. Ein Beispiel mit <code>all</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;all&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/all&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn beide Literale einen Wert liefern, wird das Ergebnis von <code>${a}+${b}</code>
-weitergeleitet.</p>
+<h2 id="formeta">Formeta</h2>
+
+<p>In der Dokumentation finden sich immer wieder Codebeispiele. Ein- und
+Ausgaben werden dabei im sog. <a href="http://b3e.net/metamorph-book/latest/datamodel.html"><em>Formeta</em></a>-Format dargestellt. Formeta hat lediglich zwei Bausteine: <em>Literale</em> (Schlüssel-Wert-Paare) und <em>Entitäten</em> (Objekte, die Literale oder weitere Entitäten enthalten). Weiter gelten folgende Regeln:</p>
+
+<ul>
+<li>Jeder Datensatz ist eine Entität</li>
+<li>Literale werden in der Form <code>schlüssel: wert</code> geschrieben und mit Kommata
+(<code>,</code>) voneinander getrennt</li>
+<li>Entitäten werden in der Form <code>schlüssel { &lt;objektinhalt&gt; }</code>
+geschrieben und können optional mit Kommata voneinander getrennt werden
+(Achtung: Zwischen <code>schlüssel</code> und <code>{</code> hat es im Unterschied zu JSON keinen Doppelpunkt!)</li>
+<li>Mit <code>\</code> können Zeichen mit spezieller Bedeutung maskiert werden: Das sind
+neben den Trennzeichen <code>:</code>, <code>,</code>, <code>{</code> und <code>}</code> <code>'</code> (einfaches
+Anführungszeichen) und das Maskierungszeichen <code>\</code> selbst.
+<code>:</code>.</li>
+<li>Anderseits haben <code>\n</code> (Zeilenumbruch) und <code>\r</code> (Wagenrücklauf)
+spezielle Bedeutung</li>
+<li><code>:</code>, <code>,</code>, <code>{</code> und <code>}</code> müssen in Werten nicht maskiert werden, wenn der
+Text in einfachen Anführungszeichen steht</li>
+<li>Leerzeichen, Tabulatoren, Zeilenumbrüche und Wagenrückläufe können optional zur besseren Lesbarkeit eingesetzt werden</li>
+</ul>
+
+<p>Ein Beispiel:</p>
+
+<pre><code>{
+  kanton1 {
+    name: Appenzell Ausserrhoden,
+    hauptort: 'Herisau, Trogen',
+    einwohnerzahl: 55\'000
+  },
+  kanton2 {
+    name: Appenzell Innerrhoden,
+    hauptort: 'Appenzell',
+    einige berge: {
+      hoher berg: säntis,
+      und: schäfler
+    }
+}
+</code></pre>
+
+<p>Dasselbe Beispiel in kompakter Schreibweise ohne Leerzeichen,
+Zeilenumbrüche und optionalen Kommata:</p>
+
+<pre><code>{kanton{name:Appenzell Ausserrhoden,hauptort:Herisau\, Trogen,einwohnerzahl:55\'000}kanton2{name:Appenzell Innerrhoden,hauptort:Appenzell,einige berge{hoher berg:säntis,und:schäfler}}}
+</code></pre>
+
+<h2 id="metafacture-runner">Metafacture Runner</h2>
+
+<p>Um die Beispiele selber durchspielen zu können, muss der sog.
+<em>Metafacture runner</em> (eine ausführbare Instanz von Metafacture)
+installiert werden. Dazu die aktuelle Metafacture-Distribution <a href="https://github.com/metafacture/metafacture-core/releases">herunterladen</a> und entpacken. Weitere Hinweise dazu finden sich auf der <a href="https://github.com/metafacture/metafacture-core">Website von
+Metafacture</a>. Zudem ist
+eine
+sog. <a href="https://github.com/metafacture/metafacture-core/wiki/Flux-user-guide">Flux</a>-Datei notwendig, in der der Transformationsworkflow definiert
+wird. Eine minimale Flux-Datei, in der das obige Beispiel transformiert
+wird, ist folgendermassen aufgebaut:</p>
+
+<pre><code>FLUX_DIR + &quot;eingabe.formeta&quot;|   // Pfad zur Eingabedatei; FLUX_DIR enthält den Pfad zur Flux-Datei
+open-file|                      // Öffne Datei
+as-formeta-records|             // Prozessiere Dateitext als Formeta
+decode-formeta|                 // Dekodiere Formeta
+morph(FLUX_DIR + &quot;morph.xml&quot;)|  // Wende Transformationsregeln an (in morph.xml definiert)
+encode-formeta|                 // Serialisiere als Formeta
+write(&quot;stdout&quot;);                // Gib Resultat auf Kommandozeile aus
+</code></pre>
+
+<p>Nachdem <em>Metafacture runner</em> installiert und die Flux- sowie die
+Eingabedatei erstellt sind, ins Verzeichnis der Flux-Datei wechseln und auf
+der Kommandozeile folgendes eingeben:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/pfad/zu/metafacture/runner/flux.sh flux.datei</code></pre></div>
+<h2 id="docker-image">Docker-Image</h2>
+
+<p>Anstatt <em>Metafacture runner</em> zu installieren, kann auch das
+entsprechende
+<a href="https://docker.com">Docker</a>-Image verwendet werden. Dazu muss Docker lokal
+installiert werden. Anschliessend über Kommandozeile ins Verzeichnis
+wechseln, wo sich die Flux- und die Eingabedatei befinden, und eingeben:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#d88200">`</span><span style="color:#111">pwd</span><span style="color:#d88200">`</span>:/mfwf:ro sschuepbach/metafacture-runner:latest flux.datei</code></pre></div>
+<div class="notices note" ><p>Wird das Docker-Image zum ersten Mal ausgeführt, dauert der Prozess etwas
+länger, da zuerst das entsprechende Image heruntergeladen werden muss.</p>
+</div>
+
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/metamorph-hacks/collectors/ausgabesteuerung/" title="Ausgabesteuerung"> <i class="fa fa-chevron-left"></i><label>Ausgabesteuerung</label></a>
-    <a class="nav nav-next" href="/metamorph-hacks/modularisierung/" title="Modularisierung" style="margin-right: 0px;"><label>Modularisierung</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/metamorph-hacks/einfuehrung/metamorph/" title="Metamorph"> <i class="fa fa-chevron-left"></i><label>Metamorph</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/literale/" title="Literale" style="margin-right: 0px;"><label>Literale</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -355,12 +411,12 @@ weitergeleitet.</p>
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i>  13/08/2018
+        <i class='fa fa-calendar'></i>  23/08/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/collectors/if-anweisungen.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/einfuehrung/hinweise-codebeispiele.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>

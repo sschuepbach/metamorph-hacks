@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.46" />
-<title>if-Anweisungen :: Metamorph Hacks</title>
+<title>Literale :: Metamorph Hacks</title>
 <link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
 <link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
 <link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/metamorph-hacks/collectors/if-anweisungen/">
+  <body data-url="/metamorph-hacks/literale/">
     
       <header>
   <div class="logo">
@@ -82,10 +82,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/literale/" class="dd-item haschildren
+    <li data-nav-id="/metamorph-hacks/literale/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/literale/">Literale</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/literale/">Literale</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/literale/datenfelder/" class="dd-item">
@@ -118,11 +119,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item parent haschildren
+    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/collectors/">Collectors</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/collectors/">Collectors</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/collectors/uebersicht/" class="dd-item">
@@ -139,7 +139,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item active">
+      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/collectors/if-anweisungen/">
             if-Anweisungen
@@ -265,14 +265,15 @@
           
     <option value="/metamorph-hacks/einfuehrung/" >
    Einführung</option>
-    <option value="/metamorph-hacks/literale/" >
-   Literale</option>
-    <option value="/metamorph-hacks/collectors/" >
-   Collectors</option> 
-      <option value="/metamorph-hacks/collectors/uebersicht/" >- Übersicht collectors</option>
-      <option value="/metamorph-hacks/collectors/ausgabesteuerung/" >- Ausgabesteuerung</option>
-      <option value="/metamorph-hacks/collectors/if-anweisungen/"  selected>- if-Anweisungen</option>
+    <option value="/metamorph-hacks/literale/"  selected>
+   Literale</option> 
+      <option value="/metamorph-hacks/literale/datenfelder/" >- Werte auslesen</option>
+      <option value="/metamorph-hacks/literale/transformationen/" >- Transformationen</option>
+      <option value="/metamorph-hacks/literale/filter/" >- Filter</option>
+      <option value="/metamorph-hacks/literale/nachschlagetabellen/" >- Nachschlagetabellen</option>
   
+    <option value="/metamorph-hacks/collectors/" >
+   Collectors</option>
     <option value="/metamorph-hacks/modularisierung/" >
    Modularisierung</option>
     <option value="/metamorph-hacks/kochbuch/" >
@@ -301,46 +302,33 @@
       </div>
     
 
-    <h1>if-Anweisungen</h1>
+    <h1>Literale</h1>
     
     
     
-    <p>Mithilfe von <code>if</code>-Anweisungen lässt sich steuern, ob ein <em>collector</em> Werte
-ausgibt oder nicht. Die Syntax sieht folgendermassen aus:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;equals</span> <span style="color:#75af00">string=</span><span style="color:#d88200">&#34;wertA&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/data&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn der Wert im <code>feldA</code> tatsächlich <code>wertA</code> ist, dann wird das Ergebnis
-von <code>${a}+${b}</code> ausgegeben, ansonsten nicht.</p>
 
-<p>In der if-Anweisung lässt sich jede <a href="https://sschuepbach.github.io/metamorph-hacks/literale/filter/">Filter-Funktion</a> sowie die <em>collectors</em> <code>all</code>,
-<code>any</code> und <code>none</code> verwenden. Ein Beispiel mit <code>all</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;all&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/all&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn beide Literale einen Wert liefern, wird das Ergebnis von <code>${a}+${b}</code>
-weitergeleitet.</p>
+
+
+<p>Dieser Teil beschäftigt sich mit den atomaren Einheiten, welche in Metamorph
+verarbeitet werden, Schlüssel-Wert-Paare oder <em>Literale</em> genannt.</p>
+
+<h2 id="inhalt">Inhalt</h2>
+
+<ul>
+<li><a href="https://sschuepbach.github.io/metamorph-hacks/literale/datenfelder/">Grundlagen</a></li>
+<li><a href="https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/">Literale transformieren</a></li>
+<li><a href="https://sschuepbach.github.io/metamorph-hacks/literale/filter/">Literale filtern</a></li>
+<li><a href="https://sschuepbach.github.io/metamorph-hacks/literale/nachschlagetabellen/">Literalwerte mappen</a></li>
+</ul>
+
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/metamorph-hacks/collectors/ausgabesteuerung/" title="Ausgabesteuerung"> <i class="fa fa-chevron-left"></i><label>Ausgabesteuerung</label></a>
-    <a class="nav nav-next" href="/metamorph-hacks/modularisierung/" title="Modularisierung" style="margin-right: 0px;"><label>Modularisierung</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/" title="Hinweise zu Codebeispielen"> <i class="fa fa-chevron-left"></i><label>Hinweise zu Codebeispielen</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/literale/datenfelder/" title="Werte auslesen" style="margin-right: 0px;"><label>Werte auslesen</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -355,12 +343,12 @@ weitergeleitet.</p>
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i>  13/08/2018
+        <i class='fa fa-calendar'></i>  10/08/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/collectors/if-anweisungen.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/literale/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>

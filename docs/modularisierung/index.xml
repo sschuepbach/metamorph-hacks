@@ -17,9 +17,9 @@
       <pubDate>Mon, 13 Aug 2018 17:29:00 +0200</pubDate>
       
       <guid>https://sschuepbach.github.io/metamorph-hacks/modularisierung/rekursion/</guid>
-      <description>Normalerweise wird ein Literal direkt nach seiner Verarbeitung an das nächste command weitergeleitet. Es ist durch eine spezielle Syntax - ein führendes @ im Namen - allerdings möglich, Werte bis zum Prozessierungsende des Datensatzes im Cache zu halten:
-&amp;lt;data source=&amp;#34;eingabename&amp;#34; name=&amp;#34;@loop&amp;#34;/&amp;gt; &amp;lt;data source=&amp;#34;@loop&amp;#34; name=&amp;#34;ausgabename&amp;#34;/&amp;gt; Dadurch lassen sich verschiedene Probleme lösen, so:
- Eine initiale Verarbeitung eines Literals lässt sich zentral definieren, die Ausgabe lässt sich an verschiedenen Orten im Morph wiederverwenden (beispielsweise in einem collector) Das Ergebnis eines collector, der vor Ende des Datensatzes &amp;ldquo;geflusht&amp;rdquo; werden muss, soll in einem anderen collector genutzt werden  Literale im Cache müssen bei jeder Wiederverwendung umbenannt werden, da sonst eine unendliche Schleife entsteht (aka ein StackOverflowError).</description>
+      <description>Normalerweise wird ein Literal direkt nach seiner Verarbeitung an das nächste command weitergeleitet. Es ist durch eine spezielle Syntax - ein führendes @ im Namen - allerdings möglich, seine Werte bis zum Prozessierungsende des Datensatzes im Cache zu halten:
+&amp;lt;data source=&amp;#34;eingabename&amp;#34; name=&amp;#34;@loop&amp;#34;/&amp;gt; &amp;lt;data source=&amp;#34;@loop&amp;#34; name=&amp;#34;ausgabename&amp;#34;/&amp;gt; Bei der Verwendung dieser Syntax sind einige Dinge zu beachten:
+ Literale im Cache müssen bei jeder Wiederverwendung umbenannt werden, da sonst eine unendliche Schleife entsteht (aka ein StackOverflowError).</description>
     </item>
     
     <item>

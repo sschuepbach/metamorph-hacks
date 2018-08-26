@@ -3,25 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/funktionen/</loc>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/einfuehrung/</loc>
+    <lastmod>2018-08-23T14:41:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/einfuehrung/metamorph/</loc>
+    <lastmod>2018-08-23T14:47:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/einfuehrung/hinweise-codebeispiele/</loc>
+    <lastmod>2018-08-23T14:44:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/literale/</loc>
     <lastmod>2018-08-10T21:22:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/funktionen/datenfelder/</loc>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/literale/datenfelder/</loc>
     <lastmod>2018-08-10T20:51:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/funktionen/transformationen/</loc>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/</loc>
   </url>
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/funktionen/filter/</loc>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/literale/filter/</loc>
   </url>
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/funktionen/nachschlagetabellen/</loc>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/literale/nachschlagetabellen/</loc>
     <lastmod>2018-08-13T13:39:00+02:00</lastmod>
   </url>
   
@@ -81,8 +96,28 @@
   </url>
   
   <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/</loc>
+    <lastmod>2018-08-24T10:46:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/</loc>
+    <lastmod>2018-08-24T10:55:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/</loc>
+    <lastmod>2018-08-24T12:13:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sschuepbach.github.io/metamorph-hacks/anhang/</loc>
     <lastmod>2018-08-13T08:41:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/</loc>
+    <lastmod>2018-08-24T22:37:00+02:00</lastmod>
   </url>
   
   <url>
@@ -96,13 +131,8 @@
   </url>
   
   <url>
-    <loc>https://sschuepbach.github.io/metamorph-hacks/anhang/versionsgeschichte/</loc>
-    <lastmod>2018-08-16T14:29:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sschuepbach.github.io/metamorph-hacks/</loc>
-    <lastmod>2018-08-10T20:32:00+02:00</lastmod>
+    <lastmod>2018-08-23T14:48:00+02:00</lastmod>
   </url>
   
   <url>

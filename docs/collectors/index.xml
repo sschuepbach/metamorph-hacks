@@ -17,10 +17,8 @@
       <pubDate>Fri, 10 Aug 2018 22:23:00 +0200</pubDate>
       
       <guid>https://sschuepbach.github.io/metamorph-hacks/collectors/uebersicht/</guid>
-      <description>Folgend eine Liste der verfügbare collectors in Metamorph.
-Die Attribute flushWith, reset und sameEntity, welche für die meisten collectors verwendet werden können, werden im nächsten Abschnitt beschrieben.
- combine Fügt Literale gemäss einem Template zusammen. Nachfolgende Werte überschreiben vorangehenden Werte desselben Feldes.
- name (erforderlich): Name des neuen Feldes value (erforderlich): Template. Werte von Feldern können mit ${feldname} eingefügt werden  concat Fügt Literale in der angegebenen Reihenfolge in einem neuen Feld zusammen.</description>
+      <description>Mithilfe von collectors können Werte verschiedener Literalen aggregiert, gefiltert oder zusammengefasst werden. Fast alle von ihnen teilen sich zwei Eigenschaften:
+ Der Zeitpunkt und die Art der Emission ihrer Werte ist steuerbar. Es ist möglich, sie nur dann auszuführen, wenn gewisse Bedingungen erfüllt sind.  Zudem ist es für die collectors combine, concat, equalsFilter, square, tuples, choose, range und group möglich, mittels &amp;lt;postprocess&amp;gt; Literal-Funktionen auf das Ergebnis anzuwenden. Beispiel:</description>
     </item>
     
     <item>

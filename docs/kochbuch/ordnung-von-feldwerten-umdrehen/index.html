@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.46" />
-<title>Werte auslesen :: Metamorph Hacks</title>
+<title>Ordnung von Werten in einem Literal umdrehen :: Metamorph Hacks</title>
 <link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
 <link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
 <link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/metamorph-hacks/funktionen/datenfelder/">
+  <body data-url="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/">
     
       <header>
   <div class="logo">
@@ -36,23 +36,18 @@
   <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
     <nav class="shortcuts">
             <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock"  rel="noopener">
-                  <i class='fa fa-github'></i> <label>Github repo</label>
+                <a href="https://github.com/sschuepbach/metamorph-hacks"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Code</label>
                 </a>
             </li>
             <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"  rel="noopener">
-                  <i class='fa fa-cloud-download'></i> <label>Download</label>
+                <a href="https://github.com/metafacture/metafacture-core"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Metafacture code</label>
                 </a>
             </li>
             <li class="" role="">
-                <a href="https://gohugo.io/"  rel="noopener">
-                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
-                </a>
-            </li>
-            <li class="" role="">
-                <a href="/metamorph-hacks/credits"  rel="noopener">
-                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                <a href="https://github.com/metafacture/metafacture-core/wiki/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Metafacture wiki</label>
                 </a>
             </li>
     </nav>
@@ -65,37 +60,58 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/metamorph-hacks/funktionen/" class="dd-item parent haschildren
+    <li data-nav-id="/metamorph-hacks/einfuehrung/" class="dd-item haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/funktionen/">Funktionen</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/einfuehrung/">Einführung</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/metamorph-hacks/funktionen/datenfelder/" class="dd-item active">
+      <li data-nav-id="/metamorph-hacks/einfuehrung/metamorph/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/datenfelder/">
+          <a href="/metamorph-hacks/einfuehrung/metamorph/">
+            Metamorph
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/">
+            Hinweise zu Codebeispielen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/literale/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/literale/">Literale</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/literale/datenfelder/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/literale/datenfelder/">
             Werte auslesen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/transformationen/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/transformationen/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/transformationen/">
+          <a href="/metamorph-hacks/literale/transformationen/">
             Transformationen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/filter/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/filter/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/filter/">
+          <a href="/metamorph-hacks/literale/filter/">
             Filter
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/nachschlagetabellen/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/nachschlagetabellen/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/nachschlagetabellen/">
+          <a href="/metamorph-hacks/literale/nachschlagetabellen/">
             Nachschlagetabellen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -167,16 +183,38 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/kochbuch/" class="dd-item haschildren
+    <li data-nav-id="/metamorph-hacks/kochbuch/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/kochbuch/">Kochbuch</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/kochbuch/">Kochbuch</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/">
             Literale in Entitäten wiederverwenden
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/" class="dd-item active">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/">
+            Ordnung von Werten in einem Literal umdrehen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/">
+            Ordnung von Literalen ändern
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/">
+            Nur letzten Wert eines Literals berücksichtigen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -188,6 +226,13 @@
       <a href="/metamorph-hacks/anhang/">Anhang</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/metamorph-hacks/anhang/metamorph-erweitern/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/anhang/metamorph-erweitern/">
+            Metamorph erweitern
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/metamorph-hacks/anhang/lsb-morphs/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/anhang/lsb-morphs/">
@@ -199,13 +244,6 @@
         <div>
           <a href="/metamorph-hacks/anhang/ressourcen/">
             Ressourcen
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/metamorph-hacks/anhang/versionsgeschichte/" class="dd-item">
-        <div>
-          <a href="/metamorph-hacks/anhang/versionsgeschichte/">
-            Versionsgeschichte
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -225,19 +263,21 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/metamorph-hacks/funktionen/" >
-   Funktionen</option> 
-      <option value="/metamorph-hacks/funktionen/datenfelder/"  selected>- Werte auslesen</option>
-      <option value="/metamorph-hacks/funktionen/transformationen/" >- Transformationen</option>
-      <option value="/metamorph-hacks/funktionen/filter/" >- Filter</option>
-      <option value="/metamorph-hacks/funktionen/nachschlagetabellen/" >- Nachschlagetabellen</option>
-  
+    <option value="/metamorph-hacks/einfuehrung/" >
+   Einführung</option>
+    <option value="/metamorph-hacks/literale/" >
+   Literale</option>
     <option value="/metamorph-hacks/collectors/" >
    Collectors</option>
     <option value="/metamorph-hacks/modularisierung/" >
    Modularisierung</option>
     <option value="/metamorph-hacks/kochbuch/" >
-   Kochbuch</option>
+   Kochbuch</option> 
+      <option value="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" >- Literale in Entitäten wiederverwenden</option>
+      <option value="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/"  selected>- Ordnung von Werten in einem Literal umdrehen</option>
+      <option value="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" >- Ordnung von Literalen ändern</option>
+      <option value="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/" >- Nur letzten Wert eines Literals berücksichtigen</option>
+  
     <option value="/metamorph-hacks/anhang/" >
    Anhang</option>
 
@@ -262,47 +302,47 @@
       </div>
     
 
-    <h1>Werte auslesen</h1>
+    <h1>Ordnung von Werten in einem Literal umdrehen</h1>
     
     
     
-    <p>Werte einzelner Datenfelder können mit der Funktion <code>data</code> ausgelesen werden.
-In ihrer einfachsten Form hat <code>data</code> ein Attribut, <code>source</code>, welches dem Namen
-des auszulesenden Feldes entspricht. Dabei können auch Wildcards verwendet
-werden, so <code>?</code> für ein beliebiges Zeichen und <code>*</code> für Sequenz arbiträrer
-Zeichen mit Länge 0-n. In dieser einfachsten Form - ausgeschrieben also bspw.
-<code>&lt;data source=&quot;100*.a&quot;/&gt;</code> - wird lediglich definiert, dass Werte in den
-Feldern, welche auf den Ausdruck <code>100*.a</code> passen, ebenso wie die Feldnamen
-unverändert übernommen werden sollen.</p>
+    
 
-<p>Zudem gibt es für <code>source</code> zwei Variablen mit fixer Bedeutung:</p>
+<h2 id="problem">Problem</h2>
 
-<ul>
-<li><code>_id</code>: Liest die ID des Datensatzes aus.</li>
-<li><code>_else</code>: Prozessiert alle Literale, welche nicht durch eine andere
-Morph-Regel verarbeitet werden. Nützlich, wenn Literale nicht
-transformiert, aber auch nicht ausgefiltert werden sollen.</li>
-</ul>
+<p>Ein Literal (<code>litA</code>) hat mehrere Werte in der Reihenfolge <code>wert1</code>,
+<code>wert2</code>. Diese Reihenfolge soll umgedreht werden.</p>
 
-<p><code>data</code> nimmt aber noch ein zweites Attribut entgegen, <code>name</code>. Dadurch lassen
-sich Feldnamen umbenennen, während der Feldwert noch immer unverändert
-übernommen wird. Durch den Feldnamen <code>_id</code> wird die ID des Datensatzes
-überschrieben.</p>
+<p><strong>Eingabe</strong></p>
 
-<div class="notices note" ><p>Datenfelder mit Namen, die mit <code>@</code> beginnen, werden <a href="https://sschuepbach.github.io/metamorph-hacks/modularisierung/rekursion/">speziell</a> behandelt.</p>
-</div>
+<pre><code>{ litA: wert1, litA: wert2 }
+</code></pre>
 
+<p><strong>Erwartete Ausgabe</strong></p>
 
-<p>Schliesslich lassen sich auf Feldwerte eine Reihe von Transformationen und
-Filter anwenden.</p>
+<pre><code>{ litA: wert2, litA: wert1 }
+</code></pre>
+
+<h2 id="lösung">Lösung</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;concat</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;litA&#34;</span> <span style="color:#75af00">delimiter=</span><span style="color:#d88200">&#34;-&#34;</span> <span style="color:#75af00">reverse=</span><span style="color:#d88200">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;litA&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;postprocess&gt;</span>
+    <span style="color:#f92672">&lt;split</span> <span style="color:#75af00">delimiter=</span><span style="color:#d88200">&#34;-&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/postprocess&gt;</span>
+<span style="color:#f92672">&lt;/concat&gt;</span></code></pre></div>
+<p>Werte werden mit <code>concat</code> in einem String, wobei neue Werte mit
+<code>reverse=&quot;true&quot;</code> jeweils vorne angefügt werden. Anschliessend wird mit der
+Funktion <code>split</code> der konkatenierte Wert entlang eines Zeichens (hier <code>-</code>)
+wieder aufgetrennt. Natürlich sollte das verwendete Zeichen nicht als Wert im
+Literal vorkommen, deshalb ist in der Praxis die Verwendung eines selteneren Zeichens als <code>-</code> ratsam.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/metamorph-hacks/funktionen/" title="Funktionen"> <i class="fa fa-chevron-left"></i><label>Funktionen</label></a>
-    <a class="nav nav-next" href="/metamorph-hacks/funktionen/transformationen/" title="Transformationen" style="margin-right: 0px;"><label>Transformationen</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" title="Literale in Entitäten wiederverwenden"> <i class="fa fa-chevron-left"></i><label>Literale in Entitäten wiederverwenden</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" title="Ordnung von Literalen ändern" style="margin-right: 0px;"><label>Ordnung von Literalen ändern</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -317,12 +357,12 @@ Filter anwenden.</p>
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i>  10/08/2018
+        <i class='fa fa-calendar'></i>  24/08/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/funktionen/datenfelder.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/kochbuch/ordnung-von-feldwerten-umdrehen.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>

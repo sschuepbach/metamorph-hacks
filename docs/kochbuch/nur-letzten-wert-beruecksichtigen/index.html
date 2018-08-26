@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.46" />
-<title>Funktionen :: Metamorph Hacks</title>
+<title>Nur letzten Wert eines Literals berücksichtigen :: Metamorph Hacks</title>
 <link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
 <link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
 <link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/metamorph-hacks/funktionen/">
+  <body data-url="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/">
     
       <header>
   <div class="logo">
@@ -36,23 +36,18 @@
   <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
     <nav class="shortcuts">
             <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock"  rel="noopener">
-                  <i class='fa fa-github'></i> <label>Github repo</label>
+                <a href="https://github.com/sschuepbach/metamorph-hacks"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Code</label>
                 </a>
             </li>
             <li class="" role="">
-                <a href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"  rel="noopener">
-                  <i class='fa fa-cloud-download'></i> <label>Download</label>
+                <a href="https://github.com/metafacture/metafacture-core"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Metafacture code</label>
                 </a>
             </li>
             <li class="" role="">
-                <a href="https://gohugo.io/"  rel="noopener">
-                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
-                </a>
-            </li>
-            <li class="" role="">
-                <a href="/metamorph-hacks/credits"  rel="noopener">
-                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                <a href="https://github.com/metafacture/metafacture-core/wiki/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Metafacture wiki</label>
                 </a>
             </li>
     </nav>
@@ -65,37 +60,58 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/metamorph-hacks/funktionen/" class="dd-item parent active haschildren
+    <li data-nav-id="/metamorph-hacks/einfuehrung/" class="dd-item haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/funktionen/">Funktionen</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/einfuehrung/">Einführung</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/metamorph-hacks/funktionen/datenfelder/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/einfuehrung/metamorph/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/datenfelder/">
+          <a href="/metamorph-hacks/einfuehrung/metamorph/">
+            Metamorph
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/einfuehrung/hinweise-codebeispiele/">
+            Hinweise zu Codebeispielen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/metamorph-hacks/literale/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/metamorph-hacks/literale/">Literale</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/metamorph-hacks/literale/datenfelder/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/literale/datenfelder/">
             Werte auslesen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/transformationen/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/transformationen/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/transformationen/">
+          <a href="/metamorph-hacks/literale/transformationen/">
             Transformationen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/filter/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/filter/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/filter/">
+          <a href="/metamorph-hacks/literale/filter/">
             Filter
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/funktionen/nachschlagetabellen/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/literale/nachschlagetabellen/" class="dd-item">
         <div>
-          <a href="/metamorph-hacks/funktionen/nachschlagetabellen/">
+          <a href="/metamorph-hacks/literale/nachschlagetabellen/">
             Nachschlagetabellen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -167,16 +183,38 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/kochbuch/" class="dd-item haschildren
+    <li data-nav-id="/metamorph-hacks/kochbuch/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/kochbuch/">Kochbuch</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/kochbuch/">Kochbuch</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/">
             Literale in Entitäten wiederverwenden
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/">
+            Ordnung von Werten in einem Literal umdrehen
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/">
+            Ordnung von Literalen ändern
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/" class="dd-item active">
+        <div>
+          <a href="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/">
+            Nur letzten Wert eines Literals berücksichtigen
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -188,6 +226,13 @@
       <a href="/metamorph-hacks/anhang/">Anhang</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/metamorph-hacks/anhang/metamorph-erweitern/" class="dd-item">
+        <div>
+          <a href="/metamorph-hacks/anhang/metamorph-erweitern/">
+            Metamorph erweitern
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/metamorph-hacks/anhang/lsb-morphs/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/anhang/lsb-morphs/">
@@ -199,13 +244,6 @@
         <div>
           <a href="/metamorph-hacks/anhang/ressourcen/">
             Ressourcen
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/metamorph-hacks/anhang/versionsgeschichte/" class="dd-item">
-        <div>
-          <a href="/metamorph-hacks/anhang/versionsgeschichte/">
-            Versionsgeschichte
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -225,19 +263,21 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/metamorph-hacks/funktionen/"  selected>
-   Funktionen</option> 
-      <option value="/metamorph-hacks/funktionen/datenfelder/" >- Werte auslesen</option>
-      <option value="/metamorph-hacks/funktionen/transformationen/" >- Transformationen</option>
-      <option value="/metamorph-hacks/funktionen/filter/" >- Filter</option>
-      <option value="/metamorph-hacks/funktionen/nachschlagetabellen/" >- Nachschlagetabellen</option>
-  
+    <option value="/metamorph-hacks/einfuehrung/" >
+   Einführung</option>
+    <option value="/metamorph-hacks/literale/" >
+   Literale</option>
     <option value="/metamorph-hacks/collectors/" >
    Collectors</option>
     <option value="/metamorph-hacks/modularisierung/" >
    Modularisierung</option>
     <option value="/metamorph-hacks/kochbuch/" >
-   Kochbuch</option>
+   Kochbuch</option> 
+      <option value="/metamorph-hacks/kochbuch/literale-in-entitaeten-wiederverwenden/" >- Literale in Entitäten wiederverwenden</option>
+      <option value="/metamorph-hacks/kochbuch/ordnung-von-feldwerten-umdrehen/" >- Ordnung von Werten in einem Literal umdrehen</option>
+      <option value="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" >- Ordnung von Literalen ändern</option>
+      <option value="/metamorph-hacks/kochbuch/nur-letzten-wert-beruecksichtigen/"  selected>- Nur letzten Wert eines Literals berücksichtigen</option>
+  
     <option value="/metamorph-hacks/anhang/" >
    Anhang</option>
 
@@ -262,21 +302,44 @@
       </div>
     
 
-    <h1>Funktionen</h1>
+    <h1>Nur letzten Wert eines Literals berücksichtigen</h1>
+    
     
     
     
 
-<p>Folgend ein summarischer Überblick über die Grundlagen von Metafacture, wobei für eine ausführlichere Erläuterung auf die <a href="https://github.com/metafacture/metafacture-core/wiki/Metamorph-User-Guide">offizielle Dokumentation</a> verwiesen wird.</p>
+<h2 id="problem">Problem</h2>
 
+<p>Von einem Literal (<code>litA</code>) sollen die Werte gezählt werden, doch
+interessiert nur die letzte Zählung (das heisst die Zählung über alle Werte).</p>
+
+<p><strong>Eingabe</strong></p>
+
+<pre><code>{ litA: wert1, litA: wert2 }
+</code></pre>
+
+<p><strong>Erwartete Ausgabe</strong></p>
+
+<pre><code>{ litA: 2 }
+</code></pre>
+
+<h2 id="lösung">Lösung</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;litA&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${litA}&#34;</span> <span style="color:#75af00">flushWith=</span><span style="color:#d88200">&#34;record&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;litA&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;count</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/data&gt;</span>
+<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
+<p>Die Lösung macht sich zunutze, dass <code>combine</code> Werte überschreibt. Wird erst am
+Ende des Datensatzes weitergeleitet, verbleibt also nur die Zählung über
+alle Werte von <code>litA</code>.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/metamorph-hacks/" title="Einführung"> <i class="fa fa-chevron-left"></i><label>Einführung</label></a>
-    <a class="nav nav-next" href="/metamorph-hacks/funktionen/datenfelder/" title="Werte auslesen" style="margin-right: 0px;"><label>Werte auslesen</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/metamorph-hacks/kochbuch/ordnung-von-literalen-aendern/" title="Ordnung von Literalen ändern"> <i class="fa fa-chevron-left"></i><label>Ordnung von Literalen ändern</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/anhang/" title="Anhang" style="margin-right: 0px;"><label>Anhang</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -291,12 +354,12 @@
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i>  10/08/2018
+        <i class='fa fa-calendar'></i>  24/08/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/funktionen/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/kochbuch/nur-letzten-wert-beruecksichtigen.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>

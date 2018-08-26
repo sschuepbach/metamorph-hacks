@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Literale on Metamorph Hacks</title>
+    <link>https://sschuepbach.github.io/metamorph-hacks/literale/</link>
+    <description>Recent content in Literale on Metamorph Hacks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-ch</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:22:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://sschuepbach.github.io/metamorph-hacks/literale/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Werte auslesen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/literale/datenfelder/</link>
+      <pubDate>Fri, 10 Aug 2018 20:51:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/literale/datenfelder/</guid>
+      <description>Werte einzelner Datenfelder können mit der Funktion data ausgelesen werden. In ihrer einfachsten Form hat data ein Attribut, source, welches dem Namen des auszulesenden Feldes entspricht. Dabei können auch Wildcards verwendet werden, so ? für ein beliebiges Zeichen und * für Sequenz arbiträrer Zeichen mit Länge 0-n. In dieser einfachsten Form - ausgeschrieben also bspw. &amp;lt;data source=&amp;quot;100*.a&amp;quot;/&amp;gt; - wird lediglich definiert, dass Werte in den Feldern, welche auf den Ausdruck 100*.</description>
+    </item>
+    
+    <item>
+      <title>Transformationen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/</guid>
+      <description>Dieses Kapitel gibt eine Übersicht über Literalfunktionen, welche Literalwerte ändern oder ersetzen. Wie die im nächsten Kapitel besprochenen Filterfunktionen werden sie innerhalb des &amp;lt;data&amp;gt;-Elementes eingefügt und können, wo sinnvoll, beliebig miteinander kombiniert werden. Dabei wird der Wert von oben nach unten von der einen zur nächsten Funktion durchgereicht. Ein Beispiel:
+&amp;lt;data source=&amp;#34;litA&amp;#34; name=&amp;#34;gruss&amp;#34;&amp;gt; &amp;lt;trim/&amp;gt; &amp;lt;whitelist&amp;gt; &amp;lt;entry name=&amp;#34;hallo&amp;#34;/&amp;gt; &amp;lt;entry name=&amp;#34;grüezi&amp;#34;/&amp;gt; &amp;lt;/whitelist&amp;gt; &amp;lt;case to=&amp;#34;upper&amp;#34;/&amp;gt; &amp;lt;/data&amp;gt; compose   compose fügt dem Wert ein Prä- (prefix=) und/oder ein Suffix (postfix=) hinzu</description>
+    </item>
+    
+    <item>
+      <title>Filter</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/literale/filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/literale/filter/</guid>
+      <description>Filterfunktionen filtern Literalwerte regelbasiert aus. In der Folge ein Überblick über die diesbezüglichen Möglichkeiten in Metamorph.
+whitelist   whitelist filtert Werte basierend auf einer Whitelist (nur gelistete Werte werden weitergeleitet). Einträge sind in der Form &amp;lt;entry name=&amp;quot;wert&amp;quot;/&amp;gt;.
+Für weitere Informationen siehe Abschnitt &amp;ldquo;Nachschlagetabellen&amp;rdquo;
+   Beispiel   Eingabe
+{litA: erlaubt, litA: nicht erlaubt, litA: verboten, litA: indiziert, litA: genehm}  Morph-Definition
+&amp;lt;data source=&amp;#34;litA&amp;#34;&amp;gt; &amp;lt;whitelist&amp;gt; &amp;lt;entry name=&amp;#34;erlaubt&amp;#34;/&amp;gt; &amp;lt;entry name=&amp;#34;genehm&amp;#34;/&amp;gt; &amp;lt;/whitelist&amp;gt; &amp;lt;/data&amp;gt; Ausgabe</description>
+    </item>
+    
+    <item>
+      <title>Nachschlagetabellen</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/literale/nachschlagetabellen/</link>
+      <pubDate>Mon, 13 Aug 2018 13:39:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/literale/nachschlagetabellen/</guid>
+      <description>Nachschlagetabellen dienen zur Filterung oder Ersetzung bestimmter Werte und werden so von den Funktionen whitelist und blacklist sowie setreplace und lookup verwendet. Sie können in Metamorph an verschiedenen Stellen definiert werden:
+ Wird die Nachschlagetabelle nur an einer einzigen Stelle benötigt, macht es Sinn, sie direkt in der Funktion des betreffenden Literal selbst zu definieren. Dies geschieht mithilfe des Enumerierungstags entry, welches das obligatorische Attribut name= (Schlüssel) und das fakultative Attribut value= (Ersetzungswert).</description>
+    </item>
+    
+  </channel>
+</rss>

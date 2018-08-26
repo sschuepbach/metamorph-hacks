@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Metamorph erweitern</title>
+      <link>https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/</link>
+      <pubDate>Fri, 24 Aug 2018 22:37:00 +0200</pubDate>
+      
+      <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/</guid>
+      <description>Metamorph kann mit eigenen Java-Klassen oder Javascript-Funktionen erweitert werden. Während im Kapitel &amp;ldquo;Transformationen&amp;rdquo; bereits die beiden entsprechenden Morph-Funktionen, java und script, vorgestellt wurden, werden an dieser Stelle Hinweise zur Implementation gegeben. Da dies weniger mit Metamorph selbst als mit der API von Metafacture zu tun hat, befindet sich dieses Kapitel im Anhang.
+Erweitern mit einer Java-Klasse AbstractStatefulFunction, AbstractSimpleStatelessFunction sowie ihrer Kindklasse AbstractFilter
+Erweitern mit einer Javascript-Funktion Die Javascript-Funktion muss ein Argument - den Wert des Literals - entgegennehmen können und ein Wert eines beliebigen Typs zurückgeben.</description>
+    </item>
+    
+    <item>
       <title>Morphs in linked-swissbib</title>
       <link>https://sschuepbach.github.io/metamorph-hacks/anhang/lsb-morphs/</link>
       <pubDate>Mon, 13 Aug 2018 07:53:00 +0200</pubDate>
@@ -28,15 +39,6 @@ enrichedMorph.xml Verarbeitet Datensätze im NTriples-Format und transformiert s
       
       <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/ressourcen/</guid>
       <description> Praxis  Metafacture-Code auf Github Metafacture-Wiki Metamorph-Schema Alte Metafacture-Organisation auf Github Metafacture: Beispiele Metafacture Java Examples Docker Image für Metafacture Standalone (experimentell)  Theorie  Analysis of library metadata with Metafacture (Vortrag Christoph Böhme) Metamorph: A Transformation Language for Semi-structured Data Das Metamorph-Datenmodell  linked-swissbib  linked-swissbib-Organisation auf Github, insbesondere:  mfWorkflows (Morph-Definitionen) swissbib-metafacture-commands (linked-swissbib Plugin für Metafacture)  Artikel-Reihe zu linked-swissbib:  Swissbib data goes linked 1: Metadatentransformation, Modellierung, Indexierung Swissbib data goes linked 2: Verlinkung und Anreicherung Swissbib data goes linked 3: Präsentation der angereicherten Daten Swissbib data goes linked Teil 4: Hydra Web API for smarter clients   </description>
-    </item>
-    
-    <item>
-      <title>Versionsgeschichte</title>
-      <link>https://sschuepbach.github.io/metamorph-hacks/anhang/versionsgeschichte/</link>
-      <pubDate>Thu, 16 Aug 2018 14:29:00 +0200</pubDate>
-      
-      <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/versionsgeschichte/</guid>
-      <description>0.09 (16.08.18) Rohfassung</description>
     </item>
     
   </channel>

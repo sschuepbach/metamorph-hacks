@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.46" />
-<title>if-Anweisungen :: Metamorph Hacks</title>
+<title>Metamorph erweitern :: Metamorph Hacks</title>
 <link rel="shortcut icon" href="/metamorph-hacks/images/favicon.png" type="image/x-icon" />
 <link href="/metamorph-hacks/css/font-awesome.min.css" rel="stylesheet">
 <link href="/metamorph-hacks/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/metamorph-hacks/collectors/if-anweisungen/">
+  <body data-url="/metamorph-hacks/anhang/metamorph-erweitern/">
     
       <header>
   <div class="logo">
@@ -118,11 +118,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item parent haschildren
+    <li data-nav-id="/metamorph-hacks/collectors/" class="dd-item haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/collectors/">Collectors</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/collectors/">Collectors</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/metamorph-hacks/collectors/uebersicht/" class="dd-item">
@@ -139,7 +138,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item active">
+      <li data-nav-id="/metamorph-hacks/collectors/if-anweisungen/" class="dd-item">
         <div>
           <a href="/metamorph-hacks/collectors/if-anweisungen/">
             if-Anweisungen
@@ -220,13 +219,14 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/metamorph-hacks/anhang/" class="dd-item haschildren
+    <li data-nav-id="/metamorph-hacks/anhang/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/metamorph-hacks/anhang/">Anhang</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/metamorph-hacks/anhang/">Anhang</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/metamorph-hacks/anhang/metamorph-erweitern/" class="dd-item">
+      <li data-nav-id="/metamorph-hacks/anhang/metamorph-erweitern/" class="dd-item active">
         <div>
           <a href="/metamorph-hacks/anhang/metamorph-erweitern/">
             Metamorph erweitern
@@ -268,17 +268,17 @@
     <option value="/metamorph-hacks/literale/" >
    Literale</option>
     <option value="/metamorph-hacks/collectors/" >
-   Collectors</option> 
-      <option value="/metamorph-hacks/collectors/uebersicht/" >- Übersicht collectors</option>
-      <option value="/metamorph-hacks/collectors/ausgabesteuerung/" >- Ausgabesteuerung</option>
-      <option value="/metamorph-hacks/collectors/if-anweisungen/"  selected>- if-Anweisungen</option>
-  
+   Collectors</option>
     <option value="/metamorph-hacks/modularisierung/" >
    Modularisierung</option>
     <option value="/metamorph-hacks/kochbuch/" >
    Kochbuch</option>
     <option value="/metamorph-hacks/anhang/" >
-   Anhang</option>
+   Anhang</option> 
+      <option value="/metamorph-hacks/anhang/metamorph-erweitern/"  selected>- Metamorph erweitern</option>
+      <option value="/metamorph-hacks/anhang/lsb-morphs/" >- Morphs in linked-swissbib</option>
+      <option value="/metamorph-hacks/anhang/ressourcen/" >- Ressourcen</option>
+  
 
 
 
@@ -301,46 +301,50 @@
       </div>
     
 
-    <h1>if-Anweisungen</h1>
+    <h1>Metamorph erweitern</h1>
     
     
     
-    <p>Mithilfe von <code>if</code>-Anweisungen lässt sich steuern, ob ein <em>collector</em> Werte
-ausgibt oder nicht. Die Syntax sieht folgendermassen aus:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">&gt;</span>
-      <span style="color:#f92672">&lt;equals</span> <span style="color:#75af00">string=</span><span style="color:#d88200">&#34;wertA&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/data&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn der Wert im <code>feldA</code> tatsächlich <code>wertA</code> ist, dann wird das Ergebnis
-von <code>${a}+${b}</code> ausgegeben, ansonsten nicht.</p>
+    
 
-<p>In der if-Anweisung lässt sich jede <a href="https://sschuepbach.github.io/metamorph-hacks/literale/filter/">Filter-Funktion</a> sowie die <em>collectors</em> <code>all</code>,
-<code>any</code> und <code>none</code> verwenden. Ein Beispiel mit <code>all</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;combine</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;ausgabe&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;${a}+${b}&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;if&gt;</span>
-    <span style="color:#f92672">&lt;all&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span><span style="color:#f92672">/&gt;</span>
-      <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/all&gt;</span>
-  <span style="color:#f92672">&lt;/if&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldA&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;a&#34;</span><span style="color:#f92672">/&gt;</span>
-  <span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;feldB&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;b&#34;</span><span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;/combine&gt;</span></code></pre></div>
-<p>Wenn beide Literale einen Wert liefern, wird das Ergebnis von <code>${a}+${b}</code>
-weitergeleitet.</p>
+<p>Metamorph kann mit eigenen Java-Klassen oder Javascript-Funktionen
+erweitert werden. Während im Kapitel &ldquo;Transformationen&rdquo; bereits die beiden
+entsprechenden Morph-Funktionen, <a href="https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/#java"><code>java</code></a> und <a href="https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/#script"><code>script</code></a>, vorgestellt wurden,
+werden an dieser Stelle Hinweise zur Implementation gegeben. Da dies weniger
+mit Metamorph selbst als mit der API von Metafacture zu tun hat,
+befindet sich dieses Kapitel im Anhang.</p>
 
+<h2 id="erweitern-mit-einer-java-klasse">Erweitern mit einer Java-Klasse</h2>
+
+<p><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractStatefulFunction.java"><code>AbstractStatefulFunction</code></a>, <a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractSimpleStatelessFunction.java"><code>AbstractSimpleStatelessFunction</code></a> sowie ihrer
+Kindklasse <a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractFilter.java"><code>AbstractFilter</code></a></p>
+
+<h2 id="erweitern-mit-einer-javascript-funktion">Erweitern mit einer Javascript-Funktion</h2>
+
+<p>Die Javascript-Funktion muss ein Argument - den Wert des Literals -
+entgegennehmen können und ein Wert eines beliebigen Typs zurückgeben. Die die
+Funktion aufrufende
+<a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Script.java">Java-Klasse</a>
+wendet dann die <code>toString()</code>-Methode auf den Rückgabewert an und gibt den Wert
+an die verarbeitende Metamorph-Funktion zurück. Ein Beispiel:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// script.js
+</span><span style="color:#75715e">// Funktioniert nur für Strings mit ASCII-Zeichen!
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">function</span> <span style="color:#75af00">asciiReverse</span><span style="color:#111">(</span><span style="color:#75af00">val</span><span style="color:#111">){</span>
+  <span style="color:#00a8c8">return</span> <span style="color:#75af00">val</span><span style="color:#111">.</span><span style="color:#75af00">split</span><span style="color:#111">(</span><span style="color:#d88200">&#34;&#34;</span><span style="color:#111">).</span><span style="color:#75af00">reverse</span><span style="color:#111">().</span><span style="color:#75af00">join</span><span style="color:#111">(</span><span style="color:#d88200">&#34;&#34;</span><span style="color:#111">);</span>
+<span style="color:#111">}</span>
+</code></pre></div>
+<p>In Metamorph wird die Funktion folgendermassen aufgerufen:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;litA&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#75715e">&lt;!-- Pfade sind relative zur Basis-URI --&gt;</span>
+  <span style="color:#f92672">&lt;script</span> <span style="color:#75af00">file=</span><span style="color:#d88200">&#34;script.js&#34;</span> <span style="color:#75af00">envoke=</span><span style="color:#d88200">&#34;asciiReverse&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/data&gt;</span></code></pre></div>
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/metamorph-hacks/collectors/ausgabesteuerung/" title="Ausgabesteuerung"> <i class="fa fa-chevron-left"></i><label>Ausgabesteuerung</label></a>
-    <a class="nav nav-next" href="/metamorph-hacks/modularisierung/" title="Modularisierung" style="margin-right: 0px;"><label>Modularisierung</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/metamorph-hacks/anhang/" title="Anhang"> <i class="fa fa-chevron-left"></i><label>Anhang</label></a>
+    <a class="nav nav-next" href="/metamorph-hacks/anhang/lsb-morphs/" title="Morphs in linked-swissbib" style="margin-right: 0px;"><label>Morphs in linked-swissbib</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -355,12 +359,12 @@ weitergeleitet.</p>
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i>  13/08/2018
+        <i class='fa fa-calendar'></i>  24/08/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/collectors/if-anweisungen.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sschuepbach/metamorph-hacks/edit/master/content/anhang/metamorph-erweitern.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
   </div>
