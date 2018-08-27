@@ -644,8 +644,8 @@ nicht in Tabelle definiert ist.</p>
 <p><strong>Morph-Definition</strong></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;data</span> <span style="color:#75af00">source=</span><span style="color:#d88200">&#34;kanton&#34;</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;hauptort&#34;</span><span style="color:#f92672">&gt;</span>
   <span style="color:#f92672">&lt;lookup</span> <span style="color:#75af00">default=</span><span style="color:#d88200">&#34;nicht bekannt&#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;Wallis&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;Sion&#34;</span>
-    <span style="color:#960050;background-color:#1e0010">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;Jura&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;Delémont&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;Wallis&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;Sion&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;Jura&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;Delémont&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;entry</span> <span style="color:#75af00">name=</span><span style="color:#d88200">&#34;Waadt&#34;</span> <span style="color:#75af00">value=</span><span style="color:#d88200">&#34;Lausanne&#34;</span><span style="color:#f92672">/&gt;</span>
   <span style="color:#f92672">&lt;/lookup&gt;</span>
 <span style="color:#f92672">&lt;/data&gt;</span></code></pre></div>
@@ -1079,6 +1079,10 @@ gesetzt werden.</p>
 <a href="https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Script.java"><code>script</code></a> übergibt Wert zur Transformation an eine Javascript-Funktion (<code>invoke=</code>) in einer
 externen Datei (<code>file=</code>)</p>
 
+<div class="notices note" ><p>Hinweise zur Implementierung einer solchen Funktion finden sich im <a href="https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/#erweitern-mit-einer-javascript-funktion">Anhang</a></p>
+</div>
+
+
 <div class="expand">
     <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fa fa-chevron-down' : 'fa fa-chevron-right';});});">
         <i style="font-size:x-small;" class="fa fa-chevron-right"></i>
@@ -1121,6 +1125,10 @@ externen Datei (<code>file=</code>)</p>
 voller Name). Werte
 aller weiteren Attribute werden einer gleichnamigen <em>setter</em>-Methode der
 Klasse übergeben.</p>
+
+<div class="notices note" ><p>Hinweise zur Implementierung einer solchen Klasse finden sich im <a href="https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/#erweitern-mit-einer-java-klasse">Anhang</a></p>
+</div>
+
 
 <div class="expand">
     <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fa fa-chevron-down' : 'fa fa-chevron-right';});});">

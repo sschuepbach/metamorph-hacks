@@ -18,8 +18,7 @@
       
       <guid>https://sschuepbach.github.io/metamorph-hacks/anhang/metamorph-erweitern/</guid>
       <description>Metamorph kann mit eigenen Java-Klassen oder Javascript-Funktionen erweitert werden. Während im Kapitel &amp;ldquo;Transformationen&amp;rdquo; bereits die beiden entsprechenden Morph-Funktionen, java und script, vorgestellt wurden, werden an dieser Stelle Hinweise zur Implementation gegeben. Da dies weniger mit Metamorph selbst als mit der API von Metafacture zu tun hat, befindet sich dieses Kapitel im Anhang.
-Erweitern mit einer Java-Klasse AbstractStatefulFunction, AbstractSimpleStatelessFunction sowie ihrer Kindklasse AbstractFilter
-Erweitern mit einer Javascript-Funktion Die Javascript-Funktion muss ein Argument - den Wert des Literals - entgegennehmen können und ein Wert eines beliebigen Typs zurückgeben.</description>
+Erweitern mit einer Java-Klasse Das Metafacture-Framework stellt im Paket org.metafacture.metamorph-api verschiedene abstrakte Klassen zur Verfügung, um Metamorph mit eigenen Java-Klassen zu erweitern:</description>
     </item>
     
     <item>

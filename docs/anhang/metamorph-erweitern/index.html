@@ -316,9 +316,63 @@ befindet sich dieses Kapitel im Anhang.</p>
 
 <h2 id="erweitern-mit-einer-java-klasse">Erweitern mit einer Java-Klasse</h2>
 
-<p><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractStatefulFunction.java"><code>AbstractStatefulFunction</code></a>, <a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractSimpleStatelessFunction.java"><code>AbstractSimpleStatelessFunction</code></a> sowie ihrer
-Kindklasse <a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractFilter.java"><code>AbstractFilter</code></a></p>
+<p>Das Metafacture-Framework stellt im Paket <code>org.metafacture.metamorph-api</code>
+verschiedene abstrakte Klassen zur Verfügung, um Metamorph mit eigenen
+Java-Klassen zu erweitern:</p>
 
+<ul>
+<li><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractSimpleStatelessFunction.java"><code>AbstractSimpleStatelessFunction</code></a> für Funktionen, die keinen Zustand zwischen der Verarbeitung einzelner Werte speichern müssen</li>
+<li><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractFilter.java"><code>AbstractFilter</code></a>, eine Kindklasse von <code>AbstractSimpleStatelessFunction</code>, welche für Filterfunktionen genutzt werden kann</li>
+<li><a href="https://github.com/metafacture/metafacture-core/blob/master/metamorph-api/src/main/java/org/metafacture/metamorph/api/helpers/AbstractStatefulFunction.java"><code>AbstractStatefulFunction</code></a> für Funktionen, die Werte von Literalen aggregieren</li>
+</ul>
+
+<p>Die Prozessierung des Literalwertes erfolgt jeweils durch die Methode
+<code>protected String process(String value)</code>, die den Literalwert entgegennimmt
+und den modifizierten zurückgibt. Durch <em>setter</em>-Methoden kann Instanzen
+dieser Klasse eine beliebige Anzahl an Argumenten mitgegeben werden (vgl. dazu
+die Metamorph-Funktion <a href="https://sschuepbach.github.io/metamorph-hacks/literale/transformationen/#java"><code>java</code></a>).</p>
+
+<p>Folgend ein Beispiel für eine neue zustandslose Metamorph-Funktion, welche
+Strings mit dem <a href="https://de.wikipedia.org/wiki/ROT13">ROT13</a>-Algorithmus
+enkodiert:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#111">org.swissbib.linked</span><span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> <span style="color:#111">org.metafacture.metamorph.api.helpers.AbstractSimpleStatelessFunction</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Encoder</span> <span style="color:#00a8c8">extends</span> <span style="color:#111">AbstractSimpleStatelessFunction</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#00a8c8">private</span> <span style="color:#111">String</span> <span style="color:#111">algorithm</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ROT13&#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">setAlgorithm</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">algorithm</span> <span style="color:#f92672">=</span> <span style="color:#111">name</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">protected</span> <span style="color:#111">String</span> <span style="color:#75af00">process</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">value</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">StringBuilder</span> <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">StringBuilder</span><span style="color:#f92672">();</span>
+        <span style="color:#00a8c8">switch</span> <span style="color:#f92672">(</span><span style="color:#111">algorithm</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#00a8c8">case</span> <span style="color:#d88200">&#34;ROT13&#34;</span><span style="color:#f92672">:</span>
+                <span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span> <span style="color:#111">c</span> <span style="color:#f92672">:</span> <span style="color:#111">value</span><span style="color:#f92672">.</span><span style="color:#75af00">toCharArray</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+                    <span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">65</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">c</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">90</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        <span style="color:#111">result</span><span style="color:#f92672">.</span><span style="color:#75af00">append</span><span style="color:#f92672">(</span><span style="color:#111">rotate</span><span style="color:#f92672">(</span><span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#111">65</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#111">90</span><span style="color:#f92672">));</span>
+                    <span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">97</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">c</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">122</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        <span style="color:#111">result</span><span style="color:#f92672">.</span><span style="color:#75af00">append</span><span style="color:#f92672">(</span><span style="color:#111">rotate</span><span style="color:#f92672">(</span><span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#111">97</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#111">122</span><span style="color:#f92672">));</span>
+                    <span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
+                        <span style="color:#111">result</span><span style="color:#f92672">.</span><span style="color:#75af00">append</span><span style="color:#f92672">(</span><span style="color:#111">c</span><span style="color:#f92672">);</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#f92672">.</span><span style="color:#75af00">toString</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">char</span> <span style="color:#75af00">rotate</span><span style="color:#f92672">(</span><span style="color:#00a8c8">char</span> <span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">char</span> <span style="color:#111">min</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">char</span> <span style="color:#111">max</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">if</span> <span style="color:#f92672">((</span><span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#111">13</span><span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">max</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#111">13</span> <span style="color:#f92672">-</span> <span style="color:#111">max</span> <span style="color:#f92672">+</span> <span style="color:#111">min</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">char</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#111">13</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
 <h2 id="erweitern-mit-einer-javascript-funktion">Erweitern mit einer Javascript-Funktion</h2>
 
 <p>Die Javascript-Funktion muss ein Argument - den Wert des Literals -
