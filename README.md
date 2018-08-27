@@ -28,10 +28,6 @@ Um die Dokumentation lokal anzeigen zu lassen, sind folgende Schritte notwendig:
 
 ## Vesionsgeschichte
 
-### 0.091 (22.08.18)
-
-* Änderung des Themes zu [docdock](https://github.com/vjeantet/hugo-theme-docdock)
-
-### 0.09 (16.08.18)
+### 0.09 (27.08.18)
 
 Rohfassung
