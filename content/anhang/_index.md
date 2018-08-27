@@ -9,6 +9,8 @@ Zusätzliche Informationen
 
 ## Inhalt
 
+* [Metamorph mit eigenen Funktionen erweitern]({{< ref
+  "metamorph-erweitern.md" >}})
 * [Besprechung von Morph-Definitionen in linked-swissbib]({{< ref
   "lsb-morphs.md" >}})
 * [Metafacture / Metamorph: Ressourcen im Internet]({{< ref

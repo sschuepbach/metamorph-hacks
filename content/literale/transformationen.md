@@ -243,7 +243,7 @@ __Morph-Definition__
 ```xml
 <data source="kanton" name="hauptort">
   <lookup default="nicht bekannt">
-    <entry name="Wallis" value="Sion"
+    <entry name="Wallis" value="Sion"/>
     <entry name="Jura" value="Delémont"/>
     <entry name="Waadt" value="Lausanne"/>
   </lookup>
@@ -546,6 +546,10 @@ __Ausgabe__
 {{< icon name="fa-github" >}}[`script`](https://github.com/metafacture/metafacture-core/tree/master/metamorph/src/main/java/org/metafacture/metamorph/functions/Script.java) übergibt Wert zur Transformation an eine Javascript-Funktion (`invoke=`) in einer
 externen Datei (`file=`)
 
+{{% notice note %}}
+Hinweise zur Implementierung einer solchen Funktion finden sich im [Anhang]({{< ref "/anhang/metamorph-erweitern.md#erweitern-mit-einer-javascript-funktion" >}})
+{{% /notice %}}
+
 {{% expand "Beispiel" %}}
 {{% panel %}}
 __Eingabe__
@@ -580,6 +584,10 @@ __Ausgabe__
 voller Name). Werte
 aller weiteren Attribute werden einer gleichnamigen _setter_-Methode der
 Klasse übergeben.
+
+{{% notice note %}}
+Hinweise zur Implementierung einer solchen Klasse finden sich im [Anhang]({{< ref "/anhang/metamorph-erweitern.md#erweitern-mit-einer-java-klasse" >}})
+{{% /notice %}}
 
 {{% expand "Beispiel" %}}
 {{% panel %}}

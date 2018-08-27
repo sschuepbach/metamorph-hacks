@@ -2,7 +2,7 @@
 title: "Morphs in linked-swissbib"
 date: 2018-08-13T07:53:00+02:00
 anchor: "lsb-morphs"
-weight: 91
+weight: 92
 ---
 
 ## [documentMorph.xml](https://github.com/linked-swissbib/mfWorkflows/blob/removed-mfrunner/transformation/indexWorkflows/documentMorph.xml)

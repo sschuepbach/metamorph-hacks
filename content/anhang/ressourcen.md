@@ -2,7 +2,7 @@
 title: Ressourcen
 date: 2018-08-16T14:30:00+02:00
 anchor: ressourcen
-weight: 92
+weight: 93
 ---
 
 ## Praxis
