@@ -10,7 +10,7 @@ ausschliesslich das Framework [Metafacture](https://github.com/metafacture).
 Da dieses Feld durchaus seine Schwierigkeiten und Tücken hat, ist auch die
 Handhabung des Frameworks nicht ganz einfach. Insbesondere der "Kern" von
 Metafacture, __Metamorph__, mit dem die Transformations- und Mappingregeln
-definiert werden, ist anspruchsvoll.  Auf Grundlage unserer Erfahrungen haben
+definiert werden, ist anspruchsvoll. Auf Grundlage unserer Erfahrungen haben
 wir die vorliegende Dokumentation geschrieben.
 
 Im ersten Teil werden die Grundlagen von Metamorph vorgestellt: Bearbeitung
@@ -31,7 +31,7 @@ Hinweise zu weiteren Metafacture-Ressourcen finden sich im
 
 Da wir aus unseren Erfahrungen mit linked-swissbib gelernt haben, dass die korrekte
 Anwendung von Metamorph-Regeln in Einzelfällen tückisch sein kann, werden im
-zweiten Teil in Form eines "Kochbuches" "Rezepte" für einzelne
+zweiten Teil, in Form eines "Kochbuches", "Rezepte" für einzelne
 Problemstellungen vorgestellt. Es versteht sich von selbst, dass dieser Teil
 keinen Anspruch auf Vollständigkeit erhebt. Ergänzungen sind natürlich
 herzlich willkommen. 
