@@ -1,4 +1,4 @@
-baseURL = "https://sschuepbach.github.io/metamorph-hacks"
+baseURL = "https://swissbib.gitlab.io/metamorph-doku"
 
 languageCode = "de-ch"
 DefaultContentLanguage = "de"
@@ -7,7 +7,7 @@ theme = "docdock"
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
 
-publishDir = "docs/"
+publishDir = "public/"
 
 defaultContentLanguage = "de"
 defaultContentLanguageInSubdir= false
