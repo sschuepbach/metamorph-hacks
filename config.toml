@@ -2,7 +2,7 @@ baseURL = "https://swissbib.gitlab.io/metamorph-doku"
 
 languageCode = "de-ch"
 DefaultContentLanguage = "de"
-title = "Metamorph Hacks"
+title = "Dokumentation Metamorph"
 theme = "docdock"
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
@@ -29,7 +29,7 @@ enableMissingTranslationPlaceholders = false
 
 
 [params]
-editURL = "https://github.com/sschuepbach/metamorph-hacks/edit/master/content/"
+editURL = "https://gitlab.com/swissbib/metamorph-doku/edit/master/content/"
 showVisitedLinks = true # default is false
 themeStyle = "flex" # "original" or "flex" # default "flex"
 themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
@@ -49,7 +49,7 @@ home = [ "HTML", "RSS", "JSON"]
 pre = "<h3>More</h3>"
 name = "<i class='fa fa-github'></i> <label>Code</label>"
 identifier = "ds"
-url = "https://github.com/sschuepbach/metamorph-hacks"
+url = "https://gitlab.com/swissbib/metamorph-doku"
 weight = 10
 
 [[menu.shortcuts]]
